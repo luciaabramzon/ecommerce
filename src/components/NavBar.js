@@ -1,6 +1,7 @@
 import { hover } from '@testing-library/user-event/dist/hover'
 import React from 'react'
-import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import {  Container,  Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import CartIcon from './icon/CartIcon'
 
 const styleNavBar={
     backgroundColor:"#F6C2A7",
@@ -8,14 +9,7 @@ const styleNavBar={
     color:"pink !important"
   }
   
-const buttonNavBar={
-    backgroundColor:"#F6E4E1",
-    color:"#AD7E47",
-    borderRadius:5,
-    borderColor:"pink",
-    hover
-   
-}
+
 
 const navBar = () => {
     return (
@@ -40,16 +34,8 @@ const navBar = () => {
                 </NavDropdown.Item>
               </NavDropdown>
               </Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Que buscas?"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button style={buttonNavBar}>Buscar!</Button>
-            </Form>
           </Navbar.Collapse>
+          <CartIcon className="cart-icon"/>
         </Container>
       </Navbar>
     )
