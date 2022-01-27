@@ -39,7 +39,7 @@ const Item=({name,price,id,setSelectedItem,img,stock,description})=>{
         </div>
         <ItemCounter stock={stock} />
         <div>
-        <button style={buttonComprar} onClick={selectedItem}>Seleccionar producto</button>
+        <button style={buttonComprar} onClick={selectedItem}>Seleccionar producto</button> 
         </div>
         <hr/>
         </div>
