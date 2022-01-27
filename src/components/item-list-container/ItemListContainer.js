@@ -1,8 +1,6 @@
-import React, { useState }from 'react';
-
+import React, { useState, useEffect }from 'react';
 import Item from './Item/Item';
-import chocotorta from '../../components/images/chocotortapng.png'
-import trufas from '../images/trufas.jpg'
+import { Task } from '../helpers/promise';
 
 const tituloStyle={
     color: "#F2BEA2",
@@ -26,39 +24,47 @@ const styleSubtitulo={
 }
 
 
-const productos = [
-    {id:"1", nombre: "Chocotorta", precio:"150",stock:"8",img:{chocotorta}},
-    {id:"2", nombre: "Trufas", precio:"50",stock:"12",img:{trufas}},
-    {id:"3", nombre: "Scons", precio:"75",stock:"19"},
-    {id:"4", nombre: "CarrotCake", precio:"170",stock:"2"},
-    {id:"5", nombre: "Lemon Pie", precio:"150",stock:"5"},
-
-]
 
 function ItemListContainer() {
+
     const [selectedItem,setSelectedItem]= useState(null);
     const [counter,setCounter]=useState(1)
+    const [products,setProducts]= useState([])
+    const [loading,setLoading]=useState(true)
+
+    const getProducts= async () => {
+        try{
+            const result= await Task;
+            setProducts(result)
+        } catch (error){
+            console.log(error)
+        }finally{
+            setLoading(false); 
+            console.log("final")
+        }
+    }
+
+    useEffect(()=>{
+        getProducts()
+    },[])
+
+    if (loading){
+       return <h1>Cargando productos...</h1>
+    }
 
   return <div>
       <h1 style={tituloStyle}>Mi Tienda Saludable</h1>
       <p style={styleParrafo}>Aqui encontraras productos deliciosos y saludables para cualquier hora del dia</p>
   <h3 style={styleSubtitulo}>Productos destacados</h3>
- 
-  {productos.map(({id,nombre,precio,img,stock}) => (
-       <Item
-        key={id}
-        id={id}
-        nombre ={nombre}
-        precio={precio}
-        img={img}
-        stock={stock}
-        setSelectedItem={setSelectedItem}
-        setCounter={setCounter}/>
-   ))}
 
+   {products.map((product)=>(
+       <Item key={product.id} {...product} setSelectedItem={setSelectedItem}/>
+   ))}
      
    <h5 style={styleSubtitulo}>Productos seleccionados:</h5>
-   <p style={styleParrafo}>{selectedItem ? selectedItem.nombre: "ninguno"}</p>
+   <p style={styleParrafo}>{selectedItem && selectedItem.name}</p>
+   <p style={styleParrafo}>{selectedItem && selectedItem.description}</p>
+   <p style={styleParrafo}>{selectedItem && selectedItem.price}</p>
     <button onClick ={()=>setSelectedItem(!selectedItem)}>x</button>
    </div>;
 }

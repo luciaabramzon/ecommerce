@@ -1,4 +1,5 @@
 import { useState } from "react"
+import ItemCounter from "../../item-counter/counter"
 
 const styleNombres={
     color: "#F2BEA2",
@@ -9,6 +10,9 @@ const stylePrecio={
     color:"#AD7E47",
 }
 
+const margin={
+    marginBottom:15
+}
 
 const buttonComprar={
     backgroundColor:"#F6E4E1",
@@ -17,36 +21,26 @@ const buttonComprar={
     borderColor:"pink",
 }
 
-const img={
-    height:20
+const imgDom={
+    height:175,
+    width:250
 }
 
-const Item=({nombre,precio,id,setSelectedItem,img,stock})=>{
+const Item=({name,price,id,setSelectedItem,img,stock,description})=>{
 
-    const selectedItem =()=> setSelectedItem({id,nombre,precio,img,stock})  ;
-    const [counter,setCounter]=useState(1);
-
-const minusCounter=()=>{
-    if (counter<=1) return ;
-    setCounter(counter-1)
-}
-
-const plusCounter=()=>{
-    
-    if (counter>=stock) return;
-    setCounter(counter+1)
-}
+    const selectedItem =()=> setSelectedItem({id,name,price,img,stock,description})  ;
 
     return <div >
-        <h5 style={styleNombres}>Nombre Producto: {nombre}</h5>
-        <h6 style={stylePrecio}>Precio:$ {precio}</h6>
-        <img src={img}/>
-        <div>
-        <button onClick={minusCounter}>-</button>
-        <span > {counter}</span>
-        <button onClick={plusCounter}>+</button>
+        <div style={margin} >
+        <img src={img} style={imgDom}/>
+        <h5 style={styleNombres}>Nombre Producto: {name}</h5>
+        <h6 style={stylePrecio}>Descripcion: {description}</h6>
+        <h6 style={stylePrecio}>Precio:$ {price}</h6>
         </div>
+        <ItemCounter stock={stock} />
+        <div>
         <button style={buttonComprar} onClick={selectedItem}>Seleccionar producto</button>
+        </div>
         <hr/>
         </div>
 }
