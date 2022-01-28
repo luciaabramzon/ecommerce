@@ -2,7 +2,7 @@ import { useState } from "react"
 
 
 
-const ItemCounter=({stock})=>{
+const ItemCounter=({stock, onAdd})=>{
 const [counter,setCounter]=useState(1);
 
 const minusCounter=()=>{
@@ -31,7 +31,7 @@ return (
 <button onClick={minusCounter}>-</button>
 <span > {counter}</span>
 <button onClick={plusCounter}>+</button>
-<button onClick={alert}  >Comprar producto</button>
+<button onClick={()=>onAdd(counter)}  >Comprar producto</button>
 </div>
 ) 
 }

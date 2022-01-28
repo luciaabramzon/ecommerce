@@ -29,9 +29,14 @@ const imgDom={
 
 const Item=({product,setSelectedItem})=>{
     const {name,price,id,img,stock,description}= product;
-    
     const selectedItem =()=>{ setSelectedItem({product})
      console.log(product) } ;
+    /*  const [show,setShow]= useState(true) */
+
+     const onAdd= (counter)=>{
+         /* setShow (false) */
+         alert(`${counter}`)
+     }
 
     return <div >
         <div style={margin} >
@@ -40,10 +45,11 @@ const Item=({product,setSelectedItem})=>{
         <h6 style={stylePrecio}>Descripcion: {description}</h6>
         <h6 style={stylePrecio}>Precio:$ {price}</h6>
         </div>
-        <ItemCounter stock={stock} />
-        <div>
+        <div> 
+       {/*  { show?  */} <ItemCounter stock={stock} onAdd={onAdd} />  
         <button style={buttonComprar} onClick={selectedItem}>Seleccionar producto</button> 
-        </div>
+        </div>  
+
         <hr/>
         </div>
 }
