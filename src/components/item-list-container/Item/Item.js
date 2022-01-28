@@ -27,10 +27,11 @@ const imgDom={
 }
 
 
-const Item=({product})=>{
-    const {name,price,id,setSelectedItem,img,stock,description}= product;
+const Item=({product,setSelectedItem})=>{
+    const {name,price,id,img,stock,description}= product;
     
-    const selectedItem =()=> setSelectedItem({id,name,price,img,stock,description})  ;
+    const selectedItem =()=>{ setSelectedItem({product})
+     console.log(product) } ;
 
     return <div >
         <div style={margin} >

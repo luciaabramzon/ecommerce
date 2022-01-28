@@ -56,14 +56,9 @@ function ItemListContainer() {
       <p style={styleParrafo}>Aqui encontraras productos deliciosos y saludables para cualquier hora del dia</p>
   <h3 style={styleSubtitulo}>Productos destacados</h3>
   {
-        loading ? <SpinnerBs/> :   <ItemList productos={products}/>
+        loading ? <SpinnerBs/> :   <ItemList productos={products} />
         }
 
-{/*   {products.map((product)=>(
-    <Item key={product.id} {...product} setSelectedItem={setSelectedItem}/>
-))} */}
-  
-     
    <h5 style={styleSubtitulo}>Productos seleccionados:</h5>
    <p style={styleParrafo}>{selectedItem && selectedItem.name}</p>
    <p style={styleParrafo}>{selectedItem && selectedItem.description}</p>
