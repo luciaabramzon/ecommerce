@@ -59,10 +59,11 @@ function ItemListContainer() {
         
         }
 
-   <h5 style={styleSubtitulo}>Productos seleccionados:</h5>
-   <p style={styleParrafo} >{selectedItem && selectedItem.name}</p>
-   <p style={styleParrafo}>{selectedItem && selectedItem.description}</p>
-   <p style={styleParrafo}>{selectedItem && selectedItem.price}</p>
+   <h5 style={styleSubtitulo} onClick={console.log(selectedItem)}>Productos seleccionados:</h5>
+  
+   <p style={styleParrafo} >{selectedItem && selectedItem.product.name}</p>
+   <p style={styleParrafo}>{selectedItem && selectedItem.product.description}</p>
+   <p style={styleParrafo}>{selectedItem && selectedItem.product.price}</p>
     <button onClick ={()=>setSelectedItem(!selectedItem) }>x</button>
    </div>;
 }
