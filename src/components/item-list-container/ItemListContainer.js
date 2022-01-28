@@ -1,6 +1,8 @@
 import React, { useState, useEffect }from 'react';
 import Item from './Item/Item';
 import { Task } from '../helpers/promise';
+import SpinnerBs from '../icon/spinnerBootstrap';
+import ItemList from './ItemList';
 
 const tituloStyle={
     color: "#F2BEA2",
@@ -48,18 +50,19 @@ function ItemListContainer() {
         getProducts()
     },[])
 
-    if (loading){
-       return <h1>Cargando productos...</h1>
-    }
 
   return <div>
       <h1 style={tituloStyle}>Mi Tienda Saludable</h1>
       <p style={styleParrafo}>Aqui encontraras productos deliciosos y saludables para cualquier hora del dia</p>
   <h3 style={styleSubtitulo}>Productos destacados</h3>
+  {
+        loading ? <SpinnerBs/> :   <ItemList productos={products}/>
+        }
 
-   {products.map((product)=>(
-       <Item key={product.id} {...product} setSelectedItem={setSelectedItem}/>
-   ))}
+{/*   {products.map((product)=>(
+    <Item key={product.id} {...product} setSelectedItem={setSelectedItem}/>
+))} */}
+  
      
    <h5 style={styleSubtitulo}>Productos seleccionados:</h5>
    <p style={styleParrafo}>{selectedItem && selectedItem.name}</p>

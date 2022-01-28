@@ -26,8 +26,10 @@ const imgDom={
     width:250
 }
 
-const Item=({name,price,id,setSelectedItem,img,stock,description})=>{
 
+const Item=({product})=>{
+    const {name,price,id,setSelectedItem,img,stock,description}= product;
+    
     const selectedItem =()=> setSelectedItem({id,name,price,img,stock,description})  ;
 
     return <div >
