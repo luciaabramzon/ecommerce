@@ -1,5 +1,4 @@
 import React, { useState, useEffect }from 'react';
-import Item from './Item/Item';
 import { Task } from '../helpers/promise';
 import SpinnerBs from '../icon/spinnerBootstrap';
 import ItemList from './ItemList';
@@ -56,14 +55,15 @@ function ItemListContainer() {
       <p style={styleParrafo}>Aqui encontraras productos deliciosos y saludables para cualquier hora del dia</p>
   <h3 style={styleSubtitulo}>Productos destacados</h3>
   {
-        loading ? <SpinnerBs/> :   <ItemList productos={products} />
+        loading ? <SpinnerBs/> :   <ItemList productos={products}  setSelectedItem={setSelectedItem}/>
+        
         }
 
    <h5 style={styleSubtitulo}>Productos seleccionados:</h5>
-   <p style={styleParrafo}>{selectedItem && selectedItem.name}</p>
+   <p style={styleParrafo} >{selectedItem && selectedItem.name}</p>
    <p style={styleParrafo}>{selectedItem && selectedItem.description}</p>
    <p style={styleParrafo}>{selectedItem && selectedItem.price}</p>
-    <button onClick ={()=>setSelectedItem(!selectedItem)}>x</button>
+    <button onClick ={()=>setSelectedItem(!selectedItem) }>x</button>
    </div>;
 }
 

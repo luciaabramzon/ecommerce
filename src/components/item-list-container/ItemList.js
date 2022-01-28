@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import Item from "./Item/Item"
 
-const ItemList =({productos})=>{
-    const [selectedItem,setSelectedItem]= useState(null);   
+const ItemList =({productos,setSelectedItem})=>{
+    
     return(
         <div>
         {

@@ -35,7 +35,7 @@ const Item=({product,setSelectedItem})=>{
 
      const onAdd= (counter)=>{
          /* setShow (false) */
-         alert(`${counter}`)
+         alert(`Se compraron ${counter} articulos`)
      }
 
     return <div >
