@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import ItemCounter from "../../item-counter/counter"
 
 const styleNombres={
@@ -27,27 +28,26 @@ const imgDom={
 }
 
 
-const Item=({product,setSelectedItem})=>{
+const Item=({product})=>{
     const {name,price,id,img,stock,description}= product;
-    const selectedItem =()=>{ setSelectedItem({product})
-     console.log(product) } ;
-    /*  const [show,setShow]= useState(true) */
+        /*  const [show,setShow]= useState(true) */
 
      const onAdd= (counter)=>{
          /* setShow (false) */
          alert(`Se compraron ${counter} articulos`)
      }
 
-    return <div >
-        <div style={margin} >
+    return <div>
+        <Link to={`/item/${id}`}><div style={margin} >
         <img src={img} style={imgDom}/>
         <h5 style={styleNombres}>Nombre Producto: {name}</h5>
+        
         <h6 style={stylePrecio}>Descripcion: {description}</h6>
         <h6 style={stylePrecio}>Precio:$ {price}</h6>
-        </div>
+        </div></Link>
         <div> 
        {/*  { show?  */} <ItemCounter stock={stock} onAdd={onAdd} />  
-        <button style={buttonComprar} onClick={selectedItem}>Seleccionar producto</button> 
+        <Link style={buttonComprar} to={`/item/${id}`}>Ver detalles</Link> 
         </div>  
 
         <hr/>

@@ -31,7 +31,7 @@ return (
 <button onClick={minusCounter}>-</button>
 <span > {counter}</span>
 <button onClick={plusCounter}>+</button>
-<button onClick={()=>onAdd(counter)}  >Comprar producto</button>
+{/* <button onClick={()=>onAdd(counter)}  >Comprar producto</button> */}
 </div>
 ) 
 }

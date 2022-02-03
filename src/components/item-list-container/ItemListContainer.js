@@ -1,7 +1,9 @@
 import React, { useState, useEffect }from 'react';
-import { Task } from '../helpers/promise';
+import { Link } from 'react-router-dom';
+import { useProducts } from '../helpers/useProducts';
 import SpinnerBs from '../icon/spinnerBootstrap';
 import ItemList from './ItemList';
+
 
 const tituloStyle={
     color: "#F2BEA2",
@@ -27,44 +29,22 @@ const styleSubtitulo={
 
 
 function ItemListContainer() {
-
-    const [selectedItem,setSelectedItem]= useState(null);
-    const [counter,setCounter]=useState(1)
-    const [products,setProducts]= useState([])
-    const [loading,setLoading]=useState(true)
-
-    const getProducts= async () => {
-        try{
-            const result= await Task;
-            setProducts(result)
-        } catch (error){
-            console.log(error)
-        }finally{
-            setLoading(false); 
-            console.log("final")
-        }
-    }
-
-    useEffect(()=>{
-        getProducts()
-    },[])
+/*     const [counter,setCounter]=useState(1)
+    const [loading,setLoading]=useState(true) */
+    const {products}= useProducts ()
 
 
   return <div>
       <h1 style={tituloStyle}>Mi Tienda Saludable</h1>
       <p style={styleParrafo}>Aqui encontraras productos deliciosos y saludables para cualquier hora del dia</p>
   <h3 style={styleSubtitulo}>Productos destacados</h3>
-  {
-        loading ? <SpinnerBs/> :   <ItemList productos={products}  setSelectedItem={setSelectedItem}/>
+{/* {
+        loading ? <SpinnerBs/> :   <ItemList productos={products}/>
         
-        }
+        } 
+          */}
 
-   <h5 style={styleSubtitulo} onClick={console.log(selectedItem)}>Productos seleccionados:</h5>
-  
-   <p style={styleParrafo} >{selectedItem && selectedItem.product.name}</p>
-   <p style={styleParrafo}>{selectedItem && selectedItem.product.description}</p>
-   <p style={styleParrafo}>{selectedItem && selectedItem.product.price}</p>
-    <button onClick ={()=>setSelectedItem(!selectedItem) }>x</button>
+<ItemList productos={products}/>
    </div>;
 }
 

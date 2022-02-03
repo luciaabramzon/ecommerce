@@ -1,7 +1,10 @@
 import { hover } from '@testing-library/user-event/dist/hover'
 import React from 'react'
 import {  Container,  Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Link, NavLink } from 'react-router-dom'
 import CartIcon from './icon/CartIcon'
+import './NavBar.css'
+
 
 const styleNavBar={
     backgroundColor:"#F6C2A7",
@@ -12,10 +15,17 @@ const styleNavBar={
 
 
 const navBar = () => {
+
+  const activeStyle={
+   color: "#AD7E47",
+  };
     return (
         <Navbar style={styleNavBar} expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#" >Mi Tienda</Navbar.Brand>
+          <Navbar.Brand>
+            <Link to ="/">
+            Mi Tienda
+            </Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -23,15 +33,23 @@ const navBar = () => {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Inicio</Nav.Link>
-              <Nav.Link href="#action2">Nostros</Nav.Link>
-              <NavDropdown  title="Que comemos?" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3"> Dulces Saludables</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Salados Saludables</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Todos Saludables
-                </NavDropdown.Item>
+              <Nav.Link>
+              <NavLink to="/item/:id" style={({isActive})=>(isActive ? activeStyle: undefined) }>
+                 Detalle
+                </NavLink>
+                </Nav.Link> 
+                <NavDropdown  title="Que comemos?" id="navbarScrollingDropdown" >
+                <NavDropdown.Item >
+                  <NavLink style={({isActive})=>(isActive ? activeStyle: undefined)} to= "category/dulces">
+                    Dulces Saludables
+                    </NavLink>
+                   </NavDropdown.Item>
+                <NavDropdown.Item >
+                  <NavLink style={({isActive})=>(isActive ? activeStyle: undefined)} to= "category/salados">
+                  Salados Saludables
+                  </NavLink>
+                  </NavDropdown.Item>
+
               </NavDropdown>
               </Nav>
           </Navbar.Collapse>

@@ -1,0 +1,13 @@
+a , #navbarScrollingDropdown{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, #navbarScrollingDropdown:hover{
+    color:tomato
+}
+
+.dropdown-menu{
+    background-color: rgb(242, 190, 162);
+}
+
