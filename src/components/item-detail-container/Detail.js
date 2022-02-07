@@ -52,7 +52,7 @@ const Detail=()=>{
     <div>
       
  <h5 style={styleSubtitulo} >Productos seleccionados:</h5>
-    {selectedItem && selectedItem.image && <img src={selectedItem.img}/>}
+    {selectedItem &&  <img src={selectedItem.img}/>}
    <p style={styleParrafo} >{selectedItem && selectedItem.name}</p>
    <p style={styleParrafo}>{selectedItem && selectedItem.description}</p>
    <p style={styleParrafo}>{selectedItem && selectedItem.price}</p> 
