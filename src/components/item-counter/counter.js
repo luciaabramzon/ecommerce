@@ -21,17 +21,13 @@ const margin={
     marginBottom:15
 }
 
-const alert = () =>{
-    console.log(`compraste ${counter} productos`)
-}
-
 
 return (   
 <div  style={margin} >
 <button onClick={minusCounter}>-</button>
 <span > {counter}</span>
 <button onClick={plusCounter}>+</button>
-{/* <button onClick={()=>onAdd(counter)}  >Comprar producto</button> */}
+<button onClick={()=>onAdd(counter)}  >Añadir al carrito</button> 
 </div>
 ) 
 }

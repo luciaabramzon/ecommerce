@@ -7,18 +7,16 @@ const ItemList =()=>{
     const {id} = useParams();
     const {products}=useProducts ();
 
-    const filterProducts = products.filter (({category})=>category===id)
+    const filterProducts = id ? products.filter (({category})=>category===id): products
     
     return(
         <div>
-            {!id &&
-            products?.map ((product)=>
+            {
+            filterProducts.map ((product)=>
             <Item key={product.id} product={product} />  
-            
+          
             )}
-            {id && filterProducts.map ((product)=>
-                <Item key={product.id} product={product}/>  
-             ) }
+ 
             </div>
     )
 

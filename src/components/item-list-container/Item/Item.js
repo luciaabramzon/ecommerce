@@ -42,7 +42,6 @@ const Item=({product})=>{
         <img src={img} style={imgDom}/>
         <h5 style={styleNombres}>Nombre Producto: {name}</h5>
         
-        <h6 style={stylePrecio}>Descripcion: {description}</h6>
         <h6 style={stylePrecio}>Precio:$ {price}</h6>
         </div></Link>
         <div> 

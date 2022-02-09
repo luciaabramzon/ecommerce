@@ -38,10 +38,12 @@ const Detail=()=>{
     const {id} = useParams ();
     const [selectedItem,setSelectedItem]=useState(null);
     
+    
 
     const onAdd= (counter)=>{
         /* setShow (false) */
-        alert(`Se compraron ${counter} articulos`)
+      
+        alert(`Se añadieron ${counter} articulos`)
     }
    
     
@@ -65,7 +67,6 @@ const Detail=()=>{
    <p style={styleParrafo}>{selectedItem && selectedItem.description}</p>
    <p style={styleParrafo}>{selectedItem && selectedItem.price}</p> 
    <ItemCounter stock={selectedItem && selectedItem.stock} onAdd={onAdd} />
-   <button onClick={onAdd}>Añadir al carrito</button>
    <Link to="/cart"><button>Ver Carrito</button></Link>
 {/*    <button onClick ={()=>setSelectedItem(!selectedItem) }>x</button> */} 
    <Link to="/" style={buttonComprar}>Volver</Link>
