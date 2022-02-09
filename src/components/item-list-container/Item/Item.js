@@ -46,7 +46,7 @@ const Item=({product})=>{
         <h6 style={stylePrecio}>Precio:$ {price}</h6>
         </div></Link>
         <div> 
-       {/*  { show?  */} <ItemCounter stock={stock} onAdd={onAdd} />  
+       {/*  { show?   <ItemCounter stock={stock} onAdd={onAdd} />  */}
         <Link style={buttonComprar} to={`/item/${id}`}>Ver detalles</Link> 
         </div>  
 

@@ -4,7 +4,7 @@ import ItemDetail from '../item-detail-container/ItemDetail';
 import ItemListContainer from '../item-list-container/ItemListContainer';
 import Navbar from '../NavBar';
 import NotFound from '../NotFound/NotFound';
-
+import Cart from '../cart/cart'
 const Rout = () =>{
     return(
         <BrowserRouter>
@@ -13,7 +13,7 @@ const Rout = () =>{
             <Route path="/" element={<ItemListContainer/>} />
             <Route path="/category/:id" element={<ItemListContainer/>} />
             <Route path="/item/:id" element={<ItemDetail/>} />
-            <Route path="/cart" element={<ItemListContainer/>} />
+            <Route path="/cart" element={<Cart/>} />
             <Route path="/checkout" element={<ItemListContainer/>} />
             <Route path="/*" element={<NotFound/>} />
         </Switch>

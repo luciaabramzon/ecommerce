@@ -13,7 +13,6 @@ export const useProducts = () => {
             console.log(error)
         }finally{
             setLoading(false); 
-            console.log("final")
         }
     }
     
