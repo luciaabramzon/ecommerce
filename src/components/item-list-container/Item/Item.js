@@ -29,13 +29,8 @@ const imgDom={
 
 
 const Item=({product})=>{
-    const {name,price,id,img,stock,description}= product;
-        /*  const [show,setShow]= useState(true) */
-
-     const onAdd= (counter)=>{
-         /* setShow (false) */
-         alert(`Se compraron ${counter} articulos`)
-     }
+    const {name,price,id,img}= product;
+   
 
     return <div>
         <Link to={`/item/${id}`}><div style={margin} >
@@ -45,7 +40,6 @@ const Item=({product})=>{
         <h6 style={stylePrecio}>Precio:$ {price}</h6>
         </div></Link>
         <div> 
-       {/*  { show?   <ItemCounter stock={stock} onAdd={onAdd} />  */}
         <Link style={buttonComprar} to={`/item/${id}`}>Ver detalles</Link> 
         </div>  
 

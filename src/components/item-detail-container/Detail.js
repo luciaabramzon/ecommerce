@@ -31,7 +31,6 @@ const Detail=()=>{
         if(products.length>0){
             const selectedProduct= products.find ((product) => 
             product.id===id)
-            
             setSelectedItem (selectedProduct)
             
         }
@@ -53,7 +52,7 @@ const Detail=()=>{
   <ItemCart selectedItem={selectedItem} setQuantity={setQuantity} handleAddToCart={handleAddToCart}  />
 {/*    
   <Link to="/cart"><button onClick={handleAddToCart}>Agregar al carrito</button></Link>
-
+<button onClick ={()=>setSelectedItem(!selectedItem) }>x</button>
   <Link to="/" style={buttonComprar}>Volver</Link> */}
   </div>
   )
