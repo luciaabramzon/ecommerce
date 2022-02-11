@@ -7,12 +7,6 @@ import Item from "../item-list-container/Item/Item";
 import { ItemCart } from "../item/ItemCart";
 
 
-const buttonComprar={
-    backgroundColor:"#F6E4E1",
-    color:"#AD7E47",
-    borderRadius:5,
-    borderColor:"pink",
-}
 
 const styleParrafo = {
     color:"#AD7E47",
@@ -28,17 +22,10 @@ const Detail=()=>{
     const [selectedItem,setSelectedItem]=useState(null);
     const {addItem}=useContext(CartContext)
     const [quantity,setQuantity]=useState(0)
-    const [show,setShow]=useState(true)
+
     
     
 
-    const onAdd= (counter)=>{
-         /* setShow (false)  */
-      
-        alert(`Se añadieron ${counter} articulos`)
-        console.log(1)
-    }
-   
     
     useEffect (()=>{
         if(products.length>0){
@@ -51,22 +38,23 @@ const Detail=()=>{
     },[products])
     
     const handleAddToCart=()=>{
-        console.log(quantity)
-        addItem({
+            addItem({
             item: selectedItem,
             quantity,
         })
         
     }
 
+  
+
        
     return (
     <div>
-  <ItemCart selectedItem={selectedItem} setQuantity={setQuantity} />
-   
+  <ItemCart selectedItem={selectedItem} setQuantity={setQuantity} handleAddToCart={handleAddToCart}  />
+{/*    
   <Link to="/cart"><button onClick={handleAddToCart}>Agregar al carrito</button></Link>
-<button onClick ={()=>setSelectedItem(!selectedItem) }>x</button>
-  <Link to="/" style={buttonComprar}>Volver</Link>
+
+  <Link to="/" style={buttonComprar}>Volver</Link> */}
   </div>
   )
 }

@@ -22,6 +22,7 @@ const plusCounter=()=>{
 }
 
 
+
 const margin={
     marginBottom:15
 }
@@ -33,7 +34,7 @@ return (
 <button onClick={minusCounter}>-</button>
 <span > {counter}</span>
 <button onClick={plusCounter}>+</button>
-<button onClick={()=>onAdd(counter)}  >Seleccionar cantidad</button>
+<button  onClick={()=>onAdd(counter)}   >Seleccionar cantidad</button>
 </div>
 ) 
 }
