@@ -1,0 +1,26 @@
+import { createContext, useState } from "react"
+import { Link } from "react-router-dom"
+
+export const CartContext=createContext()
+
+export const CartProvider = ({children})=>{
+    const[items,setItems]=useState([])
+    
+
+const addItem=(currentItem)=>{
+        if(items.some(({item})=> item.id===currentItem.item.id)) return;
+        setItems([...items,currentItem])
+    };
+    return (
+        <CartContext.Provider value={{
+            items,
+            addItem,
+        }
+         }>
+            {children}
+           {/*  <Link to="/" ><button>Volver</button></Link> */}
+        </CartContext.Provider>
+)
+}
+
+export default CartProvider

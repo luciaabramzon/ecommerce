@@ -4,7 +4,7 @@ import ItemDetail from '../item-detail-container/ItemDetail';
 import ItemListContainer from '../item-list-container/ItemListContainer';
 import Navbar from '../NavBar';
 import NotFound from '../NotFound/NotFound';
-import Cart from '../cart/cart'
+import Cart from '../cart/Cart.js'
 const Rout = () =>{
     return(
         <BrowserRouter>

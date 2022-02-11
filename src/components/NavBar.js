@@ -53,7 +53,10 @@ const navBar = () => {
               </NavDropdown>
               </Nav>
           </Navbar.Collapse>
+          <NavLink to='/cart'>
           <CartIcon className="cart-icon"/>
+          </NavLink>
+          
         </Container>
       </Navbar>
     )
