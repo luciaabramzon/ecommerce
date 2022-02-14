@@ -31,7 +31,7 @@ export const ItemCart = ({selectedItem,setQuantity,handleAddToCart}) => {
     const onAdd= (counter)=>{
         setShow (false) 
      
-       alert(`Selecciono ${counter} articulos`)
+       alert(`Selecciono ${counter} articulos, no olvide agregarlos al carrito`)
      
    }
   
@@ -47,7 +47,7 @@ export const ItemCart = ({selectedItem,setQuantity,handleAddToCart}) => {
       
       {show ? <ItemCounter stock={selectedItem && selectedItem.stock} onAdd={onAdd} setStockSelected={setQuantity}/> :
          <div>
-         <Link to="/cart"><button onClick={handleAddToCart}>Agregar al carrito</button></Link>
+         <Link to="/cart"><button onClick={handleAddToCart} >Agregar al carrito</button></Link>
         </div> }
         <Link to="/" ><button>Seguir comprando</button></Link>
          {/*     <button onClick ={()=>setSelectedItem(!selectedItem) }>x</button> */}
