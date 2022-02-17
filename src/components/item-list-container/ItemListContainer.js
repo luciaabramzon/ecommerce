@@ -29,22 +29,25 @@ const styleSubtitulo={
 
 
 function ItemListContainer() {
-/*     const [counter,setCounter]=useState(1)
-    const [loading,setLoading]=useState(true) */
+/*     const [counter,setCounter]=useState(1) */
+    const [loading,setLoading]=useState(true) 
     const {products}= useProducts ()
 
+    useEffect(()=>{
+        setTimeout(()=>{
+        setLoading(false)
+        },2000)
+    },[])
 
   return <div>
       <h1 style={tituloStyle}>Mi Tienda Saludable</h1>
       <p style={styleParrafo}>Aqui encontraras productos deliciosos y saludables para cualquier hora del dia</p>
   <h3 style={styleSubtitulo}>Productos destacados</h3>
-{/* {
-        loading ? <SpinnerBs/> :   <ItemList productos={products}/>
-        
+        {
+        loading ? <SpinnerBs/> : <ItemList productos={products}/>
         } 
-          */}
+          
 
-<ItemList productos={products}/>
    </div>;
 }
 

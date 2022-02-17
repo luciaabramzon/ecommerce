@@ -2,6 +2,7 @@ import { hover } from '@testing-library/user-event/dist/hover'
 import React from 'react'
 import {  Container,  Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link, NavLink } from 'react-router-dom'
+import { CartWidjet } from './cart/CartWidjet'
 import CartIcon from './icon/CartIcon'
 import './NavBar.css'
 
@@ -54,7 +55,7 @@ const navBar = () => {
               </Nav>
           </Navbar.Collapse>
           <NavLink to='/cart'>
-          <CartIcon className="cart-icon"/>
+          <CartWidjet className='class-icon'/>
           </NavLink>
           
         </Container>
