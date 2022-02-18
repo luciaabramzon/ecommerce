@@ -23,7 +23,7 @@ const Cart= () => {
         {items.map((item)=>(
             <li key={item.id}>
             {item.quantity} {item.name} -Precio Unitario ${item.price} - Precio Total ${item.price*item.quantity}
-            <button onClick={()=>deleteItem(item.selectedItem.id)}>
+            <button onClick={()=>deleteItem(item.id)}>
                 x
             </button>
             </li>

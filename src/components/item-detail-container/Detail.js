@@ -45,8 +45,6 @@ const Detail=()=>{
     }
 
   
-
-       
     return (
     <div>
   <ItemCart selectedItem={selectedItem} setQuantity={setQuantity} handleAddToCart={handleAddToCart}  />

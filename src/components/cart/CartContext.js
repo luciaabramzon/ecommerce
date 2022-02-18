@@ -9,7 +9,7 @@ export const CartProvider = ({children})=>{
     const[items,setItems]=useState([])
     
     const deleteItem = (id) => {
-        setItems(items.filter(item=>item.selectedItem.id!==id));
+        setItems(items.filter(item=>item.id!==id));
        
     }
 
@@ -23,13 +23,14 @@ export const CartProvider = ({children})=>{
 
 
 const addItem=(currentItem)=>{
-    const indice=items.findIndex(item=>item.selectedItem.id===currentItem.selectedItem.id)
+    const indice=items.findIndex(item=>item.id===currentItem.id)
+    console.log(items)
     console.log(indice)
     if(indice >-1){ 
         alert("producto duplicado")
         const oldQuantity= items[indice].quantity
         items[indice].quantity= oldQuantity+currentItem.quantity
-        setItems([...items])
+       /*  setItems([...items,currentItem]) */
     } else{ 
         setItems([...items,currentItem])
     }
