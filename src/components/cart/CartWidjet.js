@@ -4,7 +4,7 @@ import { CartContext } from './CartContext'
 
 
 export const CartWidjet = () => {
-  const {items}=useContext(CartContext)
+  const {items,totalCart}=useContext(CartContext)
     
   const cantidad=items.map(({quantity})=>(<li>{quantity}</li>))
   return (

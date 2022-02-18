@@ -66,7 +66,7 @@ export const productosApi = [
     },    {
         id:"7",
         name: "Wrap de Salmon",
-        price:"270",
+        price:270,
         stock:"11",
         img:wrap,
         description:"Wrap de salmon acompañado de verduras asadas, condimentado con mostaza dijon y queso crema",
@@ -75,7 +75,7 @@ export const productosApi = [
     {
         id:"8",
         name: "Ensalada",
-        price:"170",
+        price:170,
         stock:"5",
         img:ensalada,
         description:"Ensalada vegetariana, con frutas y frutos secos. Aderezo con un toque de miel",

@@ -38,8 +38,8 @@ const Detail=()=>{
     
     const handleAddToCart=()=>{
             addItem({
-            item: selectedItem,
-            quantity,
+            ...selectedItem,
+            quantity:quantity,
         })
         
     }

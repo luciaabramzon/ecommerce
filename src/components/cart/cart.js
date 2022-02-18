@@ -5,20 +5,8 @@ import { CartContext } from "./CartContext";
 
 
 const Cart= () => {
-    const {items,setItems}= useContext(CartContext);
-    const [newItem,setNewItem]=useState([])
-    
-  console.log(items)
-
-    const deleteItem = (id) => {
-        setNewItem(items.filter(item=>item.id!==id));
-    }
-
-    const borrarCarrito = (setItems) =>{
-        setItems(!items)
-        console.log(items)
-    }
-
+    const {items,deleteItem,borrarCarrito,grandTotal}= useContext(CartContext);
+   console.log(items)
     if (items.length<1){
         return( 
         <div>
@@ -32,16 +20,17 @@ const Cart= () => {
    <div>
         
     <ul>
-        {items.map(({item,quantity})=>(
+        {items.map((item)=>(
             <li key={item.id}>
-            {quantity} {item.name} -Precio Unitario ${item.price} - Precio Total ${item.price*quantity}
-            <button onClick={()=>deleteItem(item.id)}>
+            {item.quantity} {item.name} -Precio Unitario ${item.price} - Precio Total ${item.price*item.quantity}
+            <button onClick={()=>deleteItem(item.selectedItem.id)}>
                 x
             </button>
             </li>
         ))}
     </ul>
-    <button onClick = {()=>borrarCarrito(items) }>Borrar carrito</button>
+    <p>Total: {grandTotal()}</p>
+    <button onClick = {borrarCarrito }>Borrar carrito</button>
 
     </div>
     )
