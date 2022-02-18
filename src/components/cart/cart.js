@@ -1,23 +1,36 @@
 import { useContext, useState } from "react"
-import { useParams } from "react-router-dom";
-import { useProducts } from "../helpers/useProducts";
+import { Link } from "react-router-dom";
+
 import { CartContext } from "./CartContext";
 
 
 const Cart= () => {
-    const {items}= useContext(CartContext);
-    const [item,setItem]=useState([])
-    const {id}=useParams()
-    const {products}=useProducts ();
+    const {items,setItems}= useContext(CartContext);
+    const [newItem,setNewItem]=useState([])
+    
+  console.log(items)
 
-   const deleteItem=(id)=>{
-   /*  setItem( items.filter(prods=>prods.id!==id)) */
-     
-     setItem(!items)
-     console.log(setItem)
-   }
+    const deleteItem = (id) => {
+        setNewItem(items.filter(item=>item.id!==id));
+    }
+
+    const borrarCarrito = (setItems) =>{
+        setItems(!items)
+        console.log(items)
+    }
+
+    if (items.length<1){
+        return( 
+        <div>
+        <h1>Carrito Vacio</h1>
+        <Link to="/" ><button>Seguir comprando</button></Link>
+        </div> 
+        )
+    } else {
+        
     return( 
    <div>
+        
     <ul>
         {items.map(({item,quantity})=>(
             <li key={item.id}>
@@ -28,9 +41,11 @@ const Cart= () => {
             </li>
         ))}
     </ul>
-    <button >Borrar carrito</button>
+    <button onClick = {()=>borrarCarrito(items) }>Borrar carrito</button>
+
     </div>
     )
+}
 }
 
 export default Cart
