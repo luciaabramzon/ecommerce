@@ -21,6 +21,11 @@ export const CartProvider = ({children})=>{
         return items.reduce((acum,prod)=>acum + (prod.quantity * parseInt(prod.price ) ),0)
     }
 
+    const totalCart=()=>{
+        
+        return items.reduce((acum, prod)=> acum +( prod.quantity),0)
+    
+    }
 
 const addItem=(currentItem)=>{
     const indice=items.findIndex(item=>item.id===currentItem.id)
@@ -43,6 +48,7 @@ const addItem=(currentItem)=>{
             deleteItem,
             borrarCarrito,
             grandTotal,
+            totalCart,
         }
          }>
             {children}
