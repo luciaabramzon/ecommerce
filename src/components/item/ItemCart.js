@@ -30,9 +30,7 @@ export const ItemCart = ({selectedItem,setQuantity,handleAddToCart}) => {
       
     const onAdd= (counter)=>{
         setShow (false) 
-     
-       alert(`Selecciono ${counter} articulos, no olvide agregarlos al carrito`)
-     
+        alert(`Selecciono ${counter} articulos, no olvide agregarlos al carrito`)
    }
   
    

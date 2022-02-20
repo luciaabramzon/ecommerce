@@ -29,8 +29,7 @@ export const CartProvider = ({children})=>{
 
 const addItem=(currentItem)=>{
     const indice=items.findIndex(item=>item.id===currentItem.id)
-    console.log(items)
-    console.log(indice)
+
     if(indice >-1){ 
         alert("producto duplicado")
         const oldQuantity= items[indice].quantity

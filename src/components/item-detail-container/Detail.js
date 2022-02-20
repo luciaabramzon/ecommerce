@@ -1,3 +1,4 @@
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../cart/CartContext";
@@ -23,10 +24,7 @@ const Detail=()=>{
     const {addItem}=useContext(CartContext)
     const [quantity,setQuantity]=useState(0)
 
-    
-    
 
-    
     useEffect (()=>{
         if(products.length>0){
             const selectedProduct= products.find ((product) => 
@@ -34,7 +32,7 @@ const Detail=()=>{
             setSelectedItem (selectedProduct)
             
         }
-    },[products])
+    },[]) 
     
     const handleAddToCart=()=>{
             addItem({

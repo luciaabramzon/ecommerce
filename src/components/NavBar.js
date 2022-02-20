@@ -38,6 +38,11 @@ const navBar = () => {
               <NavLink to="/item/:id" style={({isActive})=>(isActive ? activeStyle: undefined) }>
                  Detalle
                 </NavLink>
+                </Nav.Link>
+                <Nav.Link>
+                <NavLink to="/ofertas" style={({isActive})=>(isActive ? activeStyle: undefined) }>
+                 Ofertas
+                </NavLink>
                 </Nav.Link> 
                 <NavDropdown  title="Que comemos?" id="navbarScrollingDropdown" >
                 <NavDropdown.Item >

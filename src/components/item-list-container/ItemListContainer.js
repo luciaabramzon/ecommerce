@@ -33,11 +33,13 @@ function ItemListContainer() {
     const [loading,setLoading]=useState(true) 
     const {products}= useProducts ()
 
+
     useEffect(()=>{
         setTimeout(()=>{
         setLoading(false)
         },2000)
-    },[])
+    },[]) 
+
 
   return <div>
       <h1 style={tituloStyle}>Mi Tienda Saludable</h1>

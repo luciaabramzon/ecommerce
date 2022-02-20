@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { initializeApp } from "firebase/app";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyBd1-Edg800NNxW8oz-yoQNlpwEZdB8VmA",
   authDomain: "ecommerce-abramzon.firebaseapp.com",

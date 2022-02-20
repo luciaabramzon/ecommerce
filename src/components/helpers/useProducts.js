@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Task } from './promise';
+import {collection,doc,getDocs,getFirestore} from 'firebase/firestore'
 
-export const useProducts = () => {
+ export const useProducts = () => {
     const [products,setProducts]= useState([])
     const [loading,setLoading]=useState(true)
 
@@ -16,13 +17,27 @@ export const useProducts = () => {
         }
     }
     
-    useEffect(()=>{
+/*     useEffect(()=>{
         getProducts()
-    },[])
+    },[]) */
 
 
+
+    useEffect(()=>{
+        const db= getFirestore();
+        const itemsCollection= collection(db,"items")
+        
+        getDocs(itemsCollection).then((snapshot)=>{
+            setProducts(snapshot.docs.map((doc)=>({
+                id:doc.id,...doc.data()
+            })))
+        })
+        },[])
+         
   return {
         products,
   };
-};
+}; 
+
+
 
