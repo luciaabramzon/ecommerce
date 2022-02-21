@@ -40,10 +40,9 @@ const Detail=()=>{
   
     useEffect (()=>{
         if(products.length>0){
-          const selectProduct=products.find (product => 
-            product.id===id)
-            setSelectedItem(selectProduct)
-            console.log(selectProduct)
+            const selectedProduct= products.find ((product) => {product.id===id})
+            setSelectedItem (selectedProduct)
+            console.log(selectedProduct)
             
         }
     },[products])
