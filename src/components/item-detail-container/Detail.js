@@ -40,10 +40,10 @@ const Detail=()=>{
   
     useEffect (()=>{
         if(products.length>0){
-           setSelectedItem(products.find ((product) => 
-            product.id===id))
-            console.log(setSelectedItem)
-            
+          const selectProduct=products.find (product => 
+            product.id===id)
+            setSelectedItem(selectProduct)
+            console.log(selectProduct)
             
         }
     },[products])
@@ -60,10 +60,7 @@ const Detail=()=>{
     return (
     <div>
   <ItemCart selectedItem={selectedItem} setQuantity={setQuantity} handleAddToCart={handleAddToCart}  />
-{/*    
-  <Link to="/cart"><button onClick={handleAddToCart}>Agregar al carrito</button></Link>
-<button onClick ={()=>setSelectedItem(!selectedItem) }>x</button>
-  <Link to="/" style={buttonComprar}>Volver</Link> */}
+
   </div>
   )
 }
