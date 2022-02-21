@@ -30,7 +30,7 @@ return (
     <li>{product.name}</li>
    
 ))} */} { sale && sale.map((product)=>
-<Item product={product}/>)
+<Item product={product} key={product.id}/>)
 }
 </div>)
 }

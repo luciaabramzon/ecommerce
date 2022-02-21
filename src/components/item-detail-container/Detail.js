@@ -18,21 +18,35 @@ const styleParrafo = {
 
 const Detail=()=>{
      
-    const {products}= useProducts();
+    const {products,setProducts}= useProducts();
     const {id} = useParams ();
     const [selectedItem,setSelectedItem]=useState(null);
     const {addItem}=useContext(CartContext)
     const [quantity,setQuantity]=useState(0)
 
+    
+ /*    useEffect(()=>{
+      const db=getFirestore()
+      const docRef=doc(db,"items",)
+      console.log(id)
+      getDoc(docRef).then((snapshot)=>{
+        setSelectedItem({
+          id:snapshot.id,
+          ...snapshot.data()
+        })
+      })
+    },[]) */
 
+  
     useEffect (()=>{
         if(products.length>0){
-            const selectedProduct= products.find ((product) => 
-            product.id===id)
-            setSelectedItem (selectedProduct)
+           setSelectedItem(products.find ((product) => 
+            product.id===id))
+            console.log(setSelectedItem)
+            
             
         }
-    },[]) 
+    },[products])
     
     const handleAddToCart=()=>{
             addItem({
