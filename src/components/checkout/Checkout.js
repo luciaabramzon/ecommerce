@@ -7,15 +7,16 @@ const Checkout = () => {
         email:"",
     })
 
+
     const [orderId,setOrderId]=useState(null)
 
     return  (
         <div>
             
 
-         <label>Nombre <input name={buyer.name}/></label>
-         <label>Edad <input name={buyer.edad}/></label>   
-         <label>Email <input name={buyer.email}/></label>      
+         <label>Nombre <input value={buyer.name} name="name" onChange={(e)=>setBuyer({...buyer,name:e.target.value})}/></label>
+         <label>Email <input value={buyer.email} name="name" onChange={(e)=>setBuyer({...buyer,email:e.target.value})}/></label>
+         <label>Telefono <input value={buyer.phone} name="name" onChange={(e)=>setBuyer({...buyer,phone:e.target.value})}/></label>      
         </div>
     )
     
