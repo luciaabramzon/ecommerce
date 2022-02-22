@@ -1,4 +1,4 @@
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../cart/CartContext";
@@ -25,28 +25,18 @@ const Detail=()=>{
     const [quantity,setQuantity]=useState(0)
 
     
- /*    useEffect(()=>{
+  useEffect(()=>{
       const db=getFirestore()
-      const docRef=doc(db,"items",)
-      console.log(id)
-      getDoc(docRef).then((snapshot)=>{
-        setSelectedItem({
+      const docRef=doc(db,"items",id)
+          getDoc(docRef).then((snapshot)=>{
+        setSelectedItem(({ 
+          ...snapshot.data(),
           id:snapshot.id,
-          ...snapshot.data()
-        })
+        }))
       })
-    },[]) */
+    },[])   
 
-  
-    useEffect (()=>{
-        if(products.length>0){
-            const selectedProduct= products.find ((product) => {product.id===id})
-            setSelectedItem (selectedProduct)
-            console.log(selectedProduct)
-            
-        }
-    },[products])
-    
+
     const handleAddToCart=()=>{
             addItem({
             ...selectedItem,

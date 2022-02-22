@@ -17,8 +17,8 @@ useEffect(()=>{
 
     getDocs(itemSale).then((snapshot)=>{
         setSale(snapshot.docs.map((doc)=>({
+            ...doc.data(),
             id:doc.id,
-            ...doc.data()
         })))
     })
 },[])

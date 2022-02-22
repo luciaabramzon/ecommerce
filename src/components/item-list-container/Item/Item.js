@@ -30,8 +30,6 @@ const imgDom={
 
 const Item=({product})=>{
     const {name,price,id,img}= product;
-   
-
     return <div>
         <Link to={`/item/${id}`}><div style={margin} >
         <img src={img} style={imgDom}/>

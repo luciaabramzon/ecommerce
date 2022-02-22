@@ -46,7 +46,7 @@ function ItemListContainer() {
       <p style={styleParrafo}>Aqui encontraras productos deliciosos y saludables para cualquier hora del dia</p>
   <h3 style={styleSubtitulo}>Productos destacados</h3>
         {
-        loading ? <SpinnerBs/> : <ItemList productos={products}/>
+        loading ? <SpinnerBs/> : <ItemList />
         } 
           
 

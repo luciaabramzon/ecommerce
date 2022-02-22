@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom";
+import Checkout from "../checkout/Checkout";
 
 import { CartContext } from "./CartContext";
 
@@ -31,6 +32,7 @@ const Cart= () => {
     </ul>
     <p>Total: {grandTotal()}</p>
     <button onClick = {borrarCarrito }>Borrar carrito</button>
+    <Checkout/>
 
     </div>
     )

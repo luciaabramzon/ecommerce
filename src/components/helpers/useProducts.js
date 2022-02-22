@@ -29,7 +29,8 @@ import {collection,doc,getDocs,getFirestore} from 'firebase/firestore'
         
         getDocs(itemsCollection).then((snapshot)=>{
             setProducts(snapshot.docs.map((doc)=>({
-                id:doc.id,...doc.data()
+               ...doc.data(),
+               id:doc.id,
             })))
         })
         },[])
