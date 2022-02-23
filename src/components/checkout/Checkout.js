@@ -1,27 +1,52 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { CartContext } from "../cart/CartContext";
+import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore";
+import { useParams } from "react-router-dom";
 
 const Checkout = () => {
+    const {items,grandTotal,borrarCarrito}=useContext(CartContext)
+    const {id} = useParams ();
+
     const[buyer,setBuyer]=useState({
         name:"",
         phone:"",
         email:"",
     })
 
-
     const [orderId,setOrderId]=useState(null)
 
-    return  (
-        <div>
-            
+    const sendOrder = () =>{
+        const order={
+            buyer,
+            item:items,
+            total:grandTotal(),
+        }
+        const db=getFirestore();
+        const orderCollection=collection(db,"orders")
 
-         <label>Nombre <input value={buyer.name} name="name" onChange={(e)=>setBuyer({...buyer,name:e.target.value})}/></label>
+        addDoc(orderCollection,order).then(({id})=>setOrderId(id))
+        
+       
+        items.forEach(item=> {
+            const docRef=doc(db,"items",item.id);
+            updateDoc(docRef,{stock:item.stock-item.quantity})
+
+            
+        })
+        
+    }
+
+    if(orderId===null){
+        return(
+            <div>
+        <label>Nombre <input value={buyer.name} name="name" onChange={(e)=>setBuyer({...buyer,name:e.target.value})}/></label>
          <label>Email <input value={buyer.email} name="name" onChange={(e)=>setBuyer({...buyer,email:e.target.value})}/></label>
          <label>Telefono <input value={buyer.phone} name="name" onChange={(e)=>setBuyer({...buyer,phone:e.target.value})}/></label>      
+        <button onClick={sendOrder}> Terminar Compra</button>
         </div>
-    )
-    
-    
-
+        )
+    }
+    return<h2>Tu compra se realizo correctamente, podes seguirla mediante tu ID {orderId}</h2>
 }
 
 export default Checkout

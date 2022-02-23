@@ -7,6 +7,7 @@ import NotFound from '../NotFound/NotFound';
 import Cart from '../cart/cart'
 import Oferta from '../ofertas/ofertas';
 
+
 const Rout = () =>{
     return(
         <BrowserRouter>
@@ -19,7 +20,7 @@ const Rout = () =>{
             <Route path="/checkout" element={<ItemListContainer/>} />
             <Route path="/*" element={<NotFound/>} />
             <Route path="/ofertas" element={<Oferta/>}/>
-        </Switch>
+            </Switch>
         </BrowserRouter>
     )
 }

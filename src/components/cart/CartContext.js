@@ -48,6 +48,7 @@ const addItem=(currentItem)=>{
             borrarCarrito,
             grandTotal,
             totalCart,
+            
         }
          }>
             {children}

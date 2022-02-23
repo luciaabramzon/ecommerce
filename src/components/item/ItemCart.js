@@ -49,9 +49,6 @@ export const ItemCart = ({selectedItem,setQuantity,handleAddToCart}) => {
          <Link to="/cart"><button onClick={handleAddToCart} >Agregar al carrito</button></Link>
         </div> }
         <Link to="/" ><button>Seguir comprando</button></Link>
-        
-         {/*     <button onClick ={()=>setSelectedItem(!selectedItem) }>x</button> */}
-
-      </div>
+         </div>
   );
 };
