@@ -1,11 +1,13 @@
 import { collection, getDoc, getDocs, getFirestore, limit, query, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
+import SpinnerBs from "../icon/spinnerBootstrap"
 import Item from "../item-list-container/Item/Item"
 
 
 
 const Oferta=()=>{
 const [sale,setSale]=useState([])
+const [loadingOfertas,setLoadingOfertas]=useState(true)
 
 useEffect(()=>{
     const db=getFirestore();
@@ -14,6 +16,9 @@ useEffect(()=>{
         where("price","<=",100),
        
     )
+    setTimeout(()=>{
+        setLoadingOfertas(false)
+        },2000)
 
     getDocs(itemSale).then((snapshot)=>{
         setSale(snapshot.docs.map((doc)=>({
@@ -23,13 +28,21 @@ useEffect(()=>{
     })
 },[])
 
+if(loadingOfertas===true){
+    return(
+        <div>
+        
+        <h1> Encontra nuestras ofertas semanales por menos de $100</h1>
+        <SpinnerBs/>
+        </div>
+    )
+}
+
 return (
 <div>
     <h1> Encontra nuestras ofertas semanales por menos de $100</h1>
-{/* {sale && sale.map((product)=>(
-    <li>{product.name}</li>
-   
-))} */} { sale && sale.map((product)=>
+
+ { sale && sale.map((product)=>
 <Item product={product} key={product.id}/>)
 }
 </div>)
