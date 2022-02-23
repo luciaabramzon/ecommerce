@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CartContext } from '../cart/CartContext';
 import Checkout from '../checkout/Checkout';
 import ItemCounter from '../item-counter/counter';
 
@@ -25,16 +26,18 @@ const imgStyle={
 
 
 
-export const ItemCart = ({selectedItem,setQuantity,handleAddToCart}) => {
+export const ItemCart = ({selectedItem,setQuantity,quantity}) => {
+    const {addItem}=useContext(CartContext)
     const [show,setShow]=useState(true)
 
-      
-    const onAdd= (counter)=>{
-        setShow (false) 
+    const handleAddToCart=(counter)=>{
+        setShow(false)
+              addItem({
+              ...selectedItem,
+              quantity:counter,
+          })
         
-   }
-  
-   
+      }
   return (
     <div>
       
@@ -44,9 +47,9 @@ export const ItemCart = ({selectedItem,setQuantity,handleAddToCart}) => {
       <p style={styleParrafo}>{selectedItem && selectedItem.description}</p>
       <p style={styleParrafo}>{selectedItem && selectedItem.price}</p> 
       
-      {show ? <ItemCounter stock={selectedItem && selectedItem.stock} onAdd={onAdd} setStockSelected={setQuantity}/> :
+      {show ? <ItemCounter stock={selectedItem && selectedItem.stock} handleAddToCart={handleAddToCart} setStockSelected={setQuantity}/> :
          <div>
-         <Link to="/cart"><button onClick={handleAddToCart} >Agregar al carrito</button></Link>
+         <Link to="/cart"><button >Ver carrito</button></Link> 
         </div> }
         <Link to="/" ><button>Seguir comprando</button></Link>
          </div>

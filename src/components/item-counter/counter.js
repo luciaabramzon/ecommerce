@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 
 
 
-const ItemCounter=({stock, onAdd,setStockSelected})=>{
+const ItemCounter=({stock, handleAddToCart,setStockSelected})=>{
 const [counter,setCounter]=useState(1);
+
 
 useEffect(()=>{
     setStockSelected(counter)
@@ -34,7 +35,7 @@ return (
 <button onClick={minusCounter}>-</button>
 <span > {counter}</span>
 <button onClick={plusCounter}>+</button>
-<button  onClick={()=>onAdd(counter)} >Seleccionar cantidad</button>
+<button  onClick={()=>handleAddToCart(counter)} >Añadir al carrito</button>
 </div>
 ) 
 }

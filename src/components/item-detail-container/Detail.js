@@ -15,13 +15,14 @@ const styleParrafo = {
     marginTop:20
 }
 
-const Detail=()=>{
+const Detail=({handleAddToCart})=>{
      
     const {products}= useProducts();
     const {id} = useParams ();
     const [selectedItem,setSelectedItem]=useState(null);
-    const {addItem}=useContext(CartContext)
+    
     const [quantity,setQuantity]=useState(0)
+   
 
     
     
@@ -36,13 +37,7 @@ const Detail=()=>{
         }
     },[products])
     
-    const handleAddToCart=()=>{
-            addItem({
-            ...selectedItem,
-            quantity:quantity,
-        })
-        
-    }
+
 
   
     return (
