@@ -1,4 +1,3 @@
-import { collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CartContext } from "../cart/CartContext";
@@ -18,25 +17,25 @@ const styleParrafo = {
 
 const Detail=()=>{
      
-    const {products,setProducts}= useProducts();
+    const {products}= useProducts();
     const {id} = useParams ();
     const [selectedItem,setSelectedItem]=useState(null);
     const {addItem}=useContext(CartContext)
     const [quantity,setQuantity]=useState(0)
 
     
-  useEffect(()=>{
-      const db=getFirestore()
-      const docRef=doc(db,"items",id)
-          getDoc(docRef).then((snapshot)=>{
-        setSelectedItem(({ 
-          ...snapshot.data(),
-          id:snapshot.id,
-        }))
-      })
-    },[])   
+    
 
-
+    
+    useEffect (()=>{
+        if(products.length>0){
+            const selectedProduct= products.find ((product) => 
+            product.id===id)
+            setSelectedItem (selectedProduct)
+            
+        }
+    },[products])
+    
     const handleAddToCart=()=>{
             addItem({
             ...selectedItem,
@@ -49,7 +48,10 @@ const Detail=()=>{
     return (
     <div>
   <ItemCart selectedItem={selectedItem} setQuantity={setQuantity} handleAddToCart={handleAddToCart}  />
-
+{/*    
+  <Link to="/cart"><button onClick={handleAddToCart}>Agregar al carrito</button></Link>
+<button onClick ={()=>setSelectedItem(!selectedItem) }>x</button>
+  <Link to="/" style={buttonComprar}>Volver</Link> */}
   </div>
   )
 }
