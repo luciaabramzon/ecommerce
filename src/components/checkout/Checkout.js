@@ -9,7 +9,7 @@ const Checkout = () => {
 
     const[buyer,setBuyer]=useState({
         name:"",
-        phone:"",
+        card:"",
         email:"",
     })
 
@@ -39,10 +39,12 @@ const Checkout = () => {
     if(orderId===null){
         return(
             <div>
+                <form><h2>Completa el formulario para terminar tu</h2>
         <label>Nombre <input value={buyer.name} name="name" onChange={(e)=>setBuyer({...buyer,name:e.target.value})}/></label>
          <label>Email <input value={buyer.email} name="name" onChange={(e)=>setBuyer({...buyer,email:e.target.value})}/></label>
-         <label>Telefono <input value={buyer.phone} name="name" onChange={(e)=>setBuyer({...buyer,phone:e.target.value})}/></label>      
+         <label>Tarjeta <input value={buyer.card} name="name" onChange={(e)=>setBuyer({...buyer,card:e.target.value})}/></label>      
         <button onClick={sendOrder}> Terminar Compra</button>
+        </form>
         </div>
         )
     }
