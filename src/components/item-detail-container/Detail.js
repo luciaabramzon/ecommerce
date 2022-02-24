@@ -23,11 +23,6 @@ const Detail=({handleAddToCart})=>{
     
     const [quantity,setQuantity]=useState(0)
    
-
-    
-    
-
-    
     useEffect (()=>{
         if(products.length>0){
             const selectedProduct= products.find ((product) => 

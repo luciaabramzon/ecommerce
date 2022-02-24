@@ -1,7 +1,8 @@
 import { useContext, useState } from "react"
 import { CartContext } from "../cart/CartContext";
 import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Form } from "react-bootstrap";
 
 const Checkout = () => {
     const {items,grandTotal,borrarCarrito}=useContext(CartContext)
@@ -9,9 +10,20 @@ const Checkout = () => {
 
     const[buyer,setBuyer]=useState({
         name:"",
-        card:"",
+        phone:"",
         email:"",
     })
+
+    const inputs=[
+        {label:"nombre",name:"name"},
+        {label:"phone",name:"phone"},
+        {label:"email",name:"email"}
+    ]
+
+    const onChange=(event)=>{
+        setBuyer({...buyer,[event.target.name]:event.target.value})
+    }
+    
 
     const [orderId,setOrderId]=useState(null)
 
@@ -25,30 +37,36 @@ const Checkout = () => {
         const orderCollection=collection(db,"orders")
 
         addDoc(orderCollection,order).then(({id})=>setOrderId(id))
-        
        
-        items.forEach(item=> {
+            items.forEach(item=> {
             const docRef=doc(db,"items",item.id);
             updateDoc(docRef,{stock:item.stock-item.quantity})
+            })
 
-            
-        })
-        
     }
+    console.log(orderId)
+   
 
     if(orderId===null){
         return(
-            <div>
-                <form><h2>Completa el formulario para terminar tu</h2>
-        <label>Nombre <input value={buyer.name} name="name" onChange={(e)=>setBuyer({...buyer,name:e.target.value})}/></label>
-         <label>Email <input value={buyer.email} name="name" onChange={(e)=>setBuyer({...buyer,email:e.target.value})}/></label>
-         <label>Tarjeta <input value={buyer.card} name="name" onChange={(e)=>setBuyer({...buyer,card:e.target.value})}/></label>      
-        <button onClick={sendOrder}> Terminar Compra</button>
-        </form>
-        </div>
+     <div>
+         {inputs.map((input)=>(
+             <form key={input.name}>
+                 <label>{input.label}</label>
+                 <input
+                 type="text"
+                 value={buyer[input.name]}
+                 onChange={onChange}
+                 name={input.name}
+                 />
+                 </form>
+         ))}
+         <button disabled={!(buyer.name && buyer.phone && buyer.email)} onSubmit={onsubmit} onClick={sendOrder}>Crear orden</button>
+     </div>
         )
     }
-    return<h2>Tu compra se realizo correctamente, podes seguirla mediante tu ID {orderId}</h2>
+    return <h2>Tu compra se realizo correctamente, podes seguirla mediante tu ID {orderId}</h2>
+    
 }
 
 export default Checkout
