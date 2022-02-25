@@ -8,10 +8,6 @@ const Checkout = () => {
     const {items,grandTotal,borrarCarrito,buyer,inputs,onChange,orderId,sendOrder}=useContext(CartContext)
     const {id} = useParams ();
 
-    console.log(orderId)
-   
-
-    if(orderId===null){
         return(
      <div>
          {inputs.map((input)=>(
@@ -25,16 +21,12 @@ const Checkout = () => {
                  />
                  </form>
          ))}
-         <button disabled={!(buyer.name && buyer.phone && buyer.email)} onSubmit={onsubmit} onClick={sendOrder}>Crear orden</button>
+     <Link to="/Final">    <button disabled={!(buyer.name && buyer.phone && buyer.email)} onSubmit={onsubmit} onClick={sendOrder}>Crear orden</button></Link>
      </div>
         )
     }
-    return (
-        <>
-    <h2>Tu compra se realizo correctamente, podes seguirla mediante tu ID {orderId}</h2>
-    <Link to="/Final"><button>Ver mas </button></Link>
-    </>
-    )
-}
+
+  
+
 
 export default Checkout
