@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { useParams } from "react-router-dom";
 import { useProducts } from "../helpers/useProducts";
 import Item from "./Item/Item"

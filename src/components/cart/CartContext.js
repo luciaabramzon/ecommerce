@@ -4,7 +4,7 @@ export const CartContext=createContext()
 
 export const CartProvider = ({children})=>{
     const[items,setItems]=useState([])
-        
+      
     const[buyer,setBuyer]=useState({
         name:"",
         phone:"",
@@ -21,7 +21,6 @@ export const CartProvider = ({children})=>{
 
     const deleteItem = (id) => {
         setItems(items.filter(item=>item.id!==id));
-       
     }
 
     const borrarCarrito = () =>{
@@ -34,25 +33,24 @@ export const CartProvider = ({children})=>{
 
     const totalCart=()=>{
         return items.reduce((acum, prod)=> acum +( prod.quantity),0)
-    
     }
 
     const addItem=(currentItem)=>{
         const indice=items.findIndex(item=>item.id===currentItem.id)
 
-            if(indice >-1){ 
-                alert("producto duplicado")
-                const oldQuantity= items[indice].quantity
-                items[indice].quantity= oldQuantity+currentItem.quantity
-            } else{ 
-                setItems([...items,currentItem])
-            }
+        if(indice >-1){ 
+        alert("producto duplicado")
+        const oldQuantity= items[indice].quantity
+        items[indice].quantity= oldQuantity+currentItem.quantity
+        } else{ 
+        setItems([...items,currentItem])
+        }
     };
 
     const onChange=(event)=>{
         setBuyer({...buyer,[event.target.name]:event.target.value})
     }
- 
+  
     const sendOrder = () =>{
         const order={
             buyer,
@@ -63,7 +61,6 @@ export const CartProvider = ({children})=>{
         const orderCollection=collection(db,"orders")
 
         addDoc(orderCollection,order).then(({id})=>setOrderId(id))
-       
             items.forEach(item=> {
             const docRef=doc(db,"items",item.id);
             updateDoc(docRef,{stock:item.stock-item.quantity})

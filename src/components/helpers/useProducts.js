@@ -1,27 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Task } from './promise';
-import {collection,doc,getDocs,getFirestore} from 'firebase/firestore'
+import React, { useEffect, useState } from 'react';
+import {collection,getDocs,getFirestore} from 'firebase/firestore'
 
  export const useProducts = () => {
     const [products,setProducts]= useState([])
     const [loading,setLoading]=useState(true)
-
-    const getProducts= async () => {
-        try{
-            const result= await Task;
-            setProducts(result)
-        } catch (error){
-            console.log(error)
-        }finally{
-            setLoading(false); 
-        }
-    }
-    
-/*     useEffect(()=>{
-        getProducts()
-    },[]) */
-
-
 
     useEffect(()=>{
         const db= getFirestore();

@@ -12,7 +12,7 @@ const Cart= () => {
         return( 
         <div>
         <h1>Carrito Vacio</h1>
-        <Link to="/" ><button>Seguir comprando</button></Link>
+        <Link to="/" ><button>Comprar!</button></Link>
         </div> 
         )
     } else {
@@ -32,6 +32,7 @@ const Cart= () => {
     </ul>
     <p>Total: {grandTotal()}</p>
     <button onClick = {borrarCarrito }>Borrar carrito</button>
+    <Link to="/" ><button>Seguir comprando</button></Link>
 <Checkout/>
     </div>
     )

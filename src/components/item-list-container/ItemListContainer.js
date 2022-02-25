@@ -1,5 +1,4 @@
 import React, { useState, useEffect }from 'react';
-import { Link } from 'react-router-dom';
 import { useProducts } from '../helpers/useProducts';
 import SpinnerBs from '../icon/spinnerBootstrap';
 import ItemList from './ItemList';
@@ -29,10 +28,8 @@ const styleSubtitulo={
 
 
 function ItemListContainer() {
-/*     const [counter,setCounter]=useState(1) */
     const [loading,setLoading]=useState(true) 
     const {products}= useProducts ()
-
 
     useEffect(()=>{
         setTimeout(()=>{
@@ -48,9 +45,7 @@ function ItemListContainer() {
         {
         loading ? <SpinnerBs/> : <ItemList />
         } 
-          
-
-   </div>;
+    </div>;
 }
 
 export default ItemListContainer;

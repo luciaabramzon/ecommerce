@@ -14,7 +14,6 @@ useEffect(()=>{
     const itemSale=query(
         collection(db,"items"),
         where("price","<=",100),
-       
     )
     setTimeout(()=>{
         setLoadingOfertas(false)
@@ -31,7 +30,6 @@ useEffect(()=>{
 if(loadingOfertas===true){
     return(
         <div>
-        
         <h1> Encontra nuestras ofertas semanales por menos de $100</h1>
         <SpinnerBs/>
         </div>

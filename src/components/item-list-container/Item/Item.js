@@ -1,6 +1,4 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
-import ItemCounter from "../../item-counter/counter"
 
 const styleNombres={
     color: "#F2BEA2",
@@ -34,13 +32,11 @@ const Item=({product})=>{
         <Link to={`/item/${id}`}><div style={margin} >
         <img src={img} style={imgDom}/>
         <h5 style={styleNombres}>Nombre Producto: {name}</h5>
-        
         <h6 style={stylePrecio}>Precio:$ {price}</h6>
         </div></Link>
         <div> 
         <Link style={buttonComprar} to={`/item/${id}`}>Ver detalles</Link> 
         </div>  
-
         <hr/>
         </div>
 }

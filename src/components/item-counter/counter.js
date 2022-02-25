@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react"
 
-
-
 const ItemCounter=({stock, handleAddToCart,setStockSelected})=>{
 const [counter,setCounter]=useState(1);
-
 
 useEffect(()=>{
     setStockSelected(counter)

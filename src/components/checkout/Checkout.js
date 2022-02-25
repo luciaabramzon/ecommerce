@@ -1,12 +1,9 @@
 import { useContext, useState } from "react"
 import { CartContext } from "../cart/CartContext";
-import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore";
 import { Link, useParams } from "react-router-dom";
-import { Button, Form } from "react-bootstrap";
 
 const Checkout = () => {
-    const {items,grandTotal,borrarCarrito,buyer,inputs,onChange,orderId,sendOrder}=useContext(CartContext)
-    const {id} = useParams ();
+    const {buyer,inputs,onChange,sendOrder}=useContext(CartContext)
 
         return(
      <div>

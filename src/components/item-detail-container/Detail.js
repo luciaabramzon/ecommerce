@@ -1,9 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { CartContext } from "../cart/CartContext";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useProducts } from "../helpers/useProducts"
-import ItemCounter from "../item-counter/counter";
-import Item from "../item-list-container/Item/Item";
 import { ItemCart } from "../item/ItemCart";
 
 
@@ -20,7 +17,6 @@ const Detail=({handleAddToCart})=>{
     const {products}= useProducts();
     const {id} = useParams ();
     const [selectedItem,setSelectedItem]=useState(null);
-    
     const [quantity,setQuantity]=useState(0)
    
     useEffect (()=>{
@@ -28,20 +24,12 @@ const Detail=({handleAddToCart})=>{
             const selectedProduct= products.find ((product) => 
             product.id===id)
             setSelectedItem (selectedProduct)
-            
-        }
+         }
     },[products])
-    
-
-
-  
+   
     return (
-    <div>
-  <ItemCart selectedItem={selectedItem} setQuantity={setQuantity} handleAddToCart={handleAddToCart}  />
-{/*    
-  <Link to="/cart"><button onClick={handleAddToCart}>Agregar al carrito</button></Link>
-<button onClick ={()=>setSelectedItem(!selectedItem) }>x</button>
-  <Link to="/" style={buttonComprar}>Volver</Link> */}
+      <div>
+        <ItemCart selectedItem={selectedItem} setQuantity={setQuantity} handleAddToCart={handleAddToCart}  />
   </div>
   )
 }

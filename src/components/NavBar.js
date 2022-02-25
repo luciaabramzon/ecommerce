@@ -13,9 +13,7 @@ const styleNavBar={
     color:"pink !important"
   }
   
-
-
-const navBar = () => {
+  const navBar = () => {
 
   const activeStyle={
    color: "#AD7E47",
@@ -62,8 +60,7 @@ const navBar = () => {
           <NavLink to='/cart'>
           <CartWidjet className='class-icon'/>
           </NavLink>
-          
-        </Container>
+       </Container>
       </Navbar>
     )
 }

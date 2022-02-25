@@ -5,11 +5,9 @@ import { CartContext } from './CartContext'
 
 export const CartWidjet = () => {
   const {items,totalCart}=useContext(CartContext)
-
   return (
     <div>
       <CartIcon/> {totalCart()}
-
       </div>
   )
 }
