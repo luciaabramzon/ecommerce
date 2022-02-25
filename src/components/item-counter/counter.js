@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import '../Estilos.css'
 
 const ItemCounter=({stock, handleAddToCart,setStockSelected})=>{
 const [counter,setCounter]=useState(1);
@@ -28,11 +29,15 @@ const margin={
 
 
 return (   
-<div  style={margin} >
-<button onClick={minusCounter}>-</button>
+    <div className="margin" >
+<div>
+<button onClick={minusCounter} className="buttonComprar" >-</button>
 <span > {counter}</span>
-<button onClick={plusCounter}>+</button>
-<button  onClick={()=>handleAddToCart(counter)} >Añadir al carrito</button>
+<button onClick={plusCounter} className="buttonComprar" >+</button>
+</div>
+<div className="marginTop" >
+<button  onClick={()=>handleAddToCart(counter) }className="buttonComprar"  >Añadir al carrito</button>
+</div>
 </div>
 ) 
 }

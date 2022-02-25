@@ -2,7 +2,7 @@ import { collection, getDoc, getDocs, getFirestore, limit, query, where } from "
 import { useEffect, useState } from "react"
 import SpinnerBs from "../icon/spinnerBootstrap"
 import Item from "../item-list-container/Item/Item"
-
+import '../Estilos.css'
 
 
 const Oferta=()=>{
@@ -30,7 +30,7 @@ useEffect(()=>{
 if(loadingOfertas===true){
     return(
         <div>
-        <h1> Encontra nuestras ofertas semanales por menos de $100</h1>
+        <h1 className="ofertas"> Encontra nuestras ofertas semanales por menos de $100</h1>
         <SpinnerBs/>
         </div>
     )
@@ -38,7 +38,7 @@ if(loadingOfertas===true){
 
 return (
 <div>
-    <h1> Encontra nuestras ofertas semanales por menos de $100</h1>
+    <h1 className="ofertas"> Encontra nuestras ofertas semanales por menos de $100</h1>
 
  { sale && sale.map((product)=>
 <Item product={product} key={product.id}/>)

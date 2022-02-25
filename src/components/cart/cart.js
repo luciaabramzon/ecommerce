@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom";
 import Checkout from "../checkout/Checkout";
-
+import '../Estilos.css'
 import { CartContext } from "./CartContext";
 
 
@@ -12,7 +12,7 @@ const Cart= () => {
         return( 
         <div>
         <h1>Carrito Vacio</h1>
-        <Link to="/" ><button>Comprar!</button></Link>
+        <Link to="/" ><button className="buttonComprar">Comprar!</button></Link>
         </div> 
         )
     } else {
@@ -22,17 +22,19 @@ const Cart= () => {
         
     <ul>
         {items.map((item)=>(
-            <li key={item.id}>
+            <li key={item.id} className='styleParrafo'>
             {item.quantity} {item.name} -Precio Unitario ${item.price} - Precio Total ${item.price*item.quantity}
-            <button onClick={()=>deleteItem(item.id)}>
+            <button className="buttonComprar" onClick={()=>deleteItem(item.id)} >
                 x
             </button>
             </li>
         ))}
     </ul>
-    <p>Total: {grandTotal()}</p>
-    <button onClick = {borrarCarrito }>Borrar carrito</button>
-    <Link to="/" ><button>Seguir comprando</button></Link>
+    <p className="styleParrafo">Total:$ {grandTotal()}</p>
+    <div className="margin">
+    <button onClick = {borrarCarrito } className="buttonComprar" >Borrar carrito</button>
+    <Link to="/" ><button className="buttonComprar" >Seguir comprando</button></Link>
+    </div>
 <Checkout/>
     </div>
     )

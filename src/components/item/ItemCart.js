@@ -2,27 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../cart/CartContext';
 import ItemCounter from '../item-counter/counter';
-
-const styleParrafo = {
-    color:"#AD7E47",
-    fontSize:20,
-    fontFamily:"Montserrat",
-    marginTop:20
-}
-
-const styleSubtitulo={
-    color:"#AD7E47",
-    fontSize:30,
-    fontFamily:"Montserrat",
-    marginTop:25,
-    fontWeight:"bold"
-}
-
-const imgStyle={
-    width:450,
-    height:330,
-}
-
+import '../Estilos.css'
 
 
 export const ItemCart = ({selectedItem,setQuantity,quantity}) => {
@@ -38,18 +18,18 @@ export const ItemCart = ({selectedItem,setQuantity,quantity}) => {
     }
   return (
     <div>
-        <h5 style={styleSubtitulo} >Productos seleccionados:</h5>
-        {selectedItem &&  <img src={selectedItem.img} syle={imgStyle} />}
-        <p style={styleParrafo} >{selectedItem && selectedItem.name}</p>
-        <p style={styleParrafo}>{selectedItem && selectedItem.description}</p>
-        <p style={styleParrafo}>$ {selectedItem && selectedItem.price}</p> 
+        <h5 className='styleSubtitulo' >Productos seleccionados:</h5>
+        {selectedItem &&  <img src={selectedItem.img} className='imgStyle'/>}
+        <p className='styleParrafo'  >{selectedItem && selectedItem.name}</p>
+        <p className='styleParrafo'  >{selectedItem && selectedItem.description}</p>
+        <p className='styleParrafo'  >$ {selectedItem && selectedItem.price}</p> 
     {
         show ? <ItemCounter stock={selectedItem && selectedItem.stock} handleAddToCart={handleAddToCart} setStockSelected={setQuantity}/> :
     <div>
-        <Link to="/cart"><button >Ver carrito</button></Link> 
+        <Link to="/cart"><button className='buttonComprar' >Ver carrito</button></Link> 
     </div>
     }
-        <Link to="/" ><button>Seguir comprando</button></Link>
+        <Link to="/" ><button className='buttonComprar'>Seguir comprando</button></Link>
     </div>
   );
 };

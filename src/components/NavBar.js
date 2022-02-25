@@ -1,17 +1,9 @@
-import { hover } from '@testing-library/user-event/dist/hover'
 import React from 'react'
 import {  Container,  Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link, NavLink } from 'react-router-dom'
 import { CartWidjet } from './cart/CartWidjet'
-import CartIcon from './icon/CartIcon'
-import './NavBar.css'
+import './Estilos.css'
 
-
-const styleNavBar={
-    backgroundColor:"#F6C2A7",
-    fontSize:15,
-    color:"pink !important"
-  }
   
   const navBar = () => {
 
@@ -19,7 +11,7 @@ const styleNavBar={
    color: "#AD7E47",
   };
     return (
-        <Navbar style={styleNavBar} expand="lg">
+        <Navbar className='styleNavBar' expand="lg">
         <Container fluid>
           <Navbar.Brand>
             <Link to ="/">

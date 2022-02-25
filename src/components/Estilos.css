@@ -1,0 +1,86 @@
+a , #navbarScrollingDropdown{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover, #navbarScrollingDropdown:hover{
+    color:tomato
+}
+
+.dropdown-menu{
+    background-color: rgb(242, 190, 162);
+}
+.styleNavBar{
+    background-color:#F6C2A7;
+    font-size: 15px;
+    color:pink !important;
+  }
+
+  .tituloStyle{
+    color: #F2BEA2;
+    margin-top:15px;
+    font-size:50px,
+}
+
+.styleParrafo{
+    color:#AD7E47;
+    font-size:20px;
+    font-family:"Montserrat";
+    margin-top:20px;
+}
+
+ .styleSubtitulo{
+    color:#AD7E47;
+    font-size:30px;
+    font-family:"Montserrat";
+    margin-top:25px;
+    font-weight:"bold"
+}
+
+.imgStyle{
+    width:450px;
+    height:330px;
+}
+
+.styleNombres{
+    color: #F2BEA2;
+    font-size:20px;
+}
+
+.stylePrecio{
+    color:#AD7E47 !important;
+}
+.ofertas{
+    color: #F2BEA2;
+    margin-top:25px;
+    margin-bottom: 25px;
+    font-size:50px,
+}
+
+.margin{
+    margin-bottom:15px;
+}
+
+.marginTop{
+    margin-top:15px;
+}
+
+.buttonComprar{
+    background-color:#F6E4E1;
+    color:#AD7E47;
+    border-radius:5px;
+    border-color:pink;
+}
+.buttonComprar:hover{
+    background-color:#AD7E47;
+    color:#F6E4E1;
+}
+
+.imgDom{
+    height:175px;
+    width:250px;
+}
+
+
+
+

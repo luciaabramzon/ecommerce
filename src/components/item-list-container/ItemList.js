@@ -14,12 +14,8 @@ const ItemList =()=>{
             {
             filterProducts.map ((product)=>
             <Item key={product.id} product={product} />  
-          
             )}
- 
-            </div>
+        </div>
     )
-
 }
-
 export default ItemList

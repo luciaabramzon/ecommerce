@@ -3,15 +3,6 @@ import { useParams } from "react-router-dom";
 import { useProducts } from "../helpers/useProducts"
 import { ItemCart } from "../item/ItemCart";
 
-
-
-const styleParrafo = {
-    color:"#AD7E47",
-    fontSize:20,
-    fontFamily:"Montserrat",
-    marginTop:20
-}
-
 const Detail=({handleAddToCart})=>{
      
     const {products}= useProducts();

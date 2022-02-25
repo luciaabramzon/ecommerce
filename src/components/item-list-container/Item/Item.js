@@ -1,41 +1,17 @@
 import { Link } from "react-router-dom"
-
-const styleNombres={
-    color: "#F2BEA2",
-    fontSize:20,
-}
-
-const stylePrecio={
-    color:"#AD7E47",
-}
-
-const margin={
-    marginBottom:15
-}
-
-const buttonComprar={
-    backgroundColor:"#F6E4E1",
-    color:"#AD7E47",
-    borderRadius:5,
-    borderColor:"pink",
-}
-
-const imgDom={
-    height:175,
-    width:250
-}
+import '../../Estilos.css'
 
 
 const Item=({product})=>{
     const {name,price,id,img}= product;
     return <div>
-        <Link to={`/item/${id}`}><div style={margin} >
-        <img src={img} style={imgDom}/>
-        <h5 style={styleNombres}>Nombre Producto: {name}</h5>
-        <h6 style={stylePrecio}>Precio:$ {price}</h6>
+        <Link to={`/item/${id}`}><div className="margin">
+        <img src={img} className='imgDom'/>
+        <h5 className='styleNombres'>Nombre Producto: {name}</h5>
+        <h6 className="stylePrecio" >Precio:$ {price}</h6>
         </div></Link>
         <div> 
-        <Link style={buttonComprar} to={`/item/${id}`}>Ver detalles</Link> 
+        <Link to={`/item/${id}`}><button className="buttonComprar">Ver detalles</button></Link> 
         </div>  
         <hr/>
         </div>
