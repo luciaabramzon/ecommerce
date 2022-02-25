@@ -1,5 +1,4 @@
 import { createContext, useState } from "react"
-import { Link } from "react-router-dom"
 import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore";
 export const CartContext=createContext()
 
