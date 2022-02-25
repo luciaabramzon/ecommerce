@@ -1,6 +1,6 @@
 import { createContext, useState } from "react"
 import { Link } from "react-router-dom"
-
+import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore";
 export const CartContext=createContext()
 
 
@@ -40,6 +40,44 @@ const addItem=(currentItem)=>{
     }
         
     };
+
+    
+    const[buyer,setBuyer]=useState({
+        name:"",
+        phone:"",
+        email:"",
+    })
+
+    const inputs=[
+        {label:"nombre",name:"name"},
+        {label:"phone",name:"phone"},
+        {label:"email",name:"email"}
+    ]
+
+    const onChange=(event)=>{
+        setBuyer({...buyer,[event.target.name]:event.target.value})
+    }
+    
+
+    const [orderId,setOrderId]=useState(null)
+
+    const sendOrder = () =>{
+        const order={
+            buyer,
+            item:items,
+            total:grandTotal(),
+        }
+        const db=getFirestore();
+        const orderCollection=collection(db,"orders")
+
+        addDoc(orderCollection,order).then(({id})=>setOrderId(id))
+       
+            items.forEach(item=> {
+            const docRef=doc(db,"items",item.id);
+            updateDoc(docRef,{stock:item.stock-item.quantity})
+            })
+
+    }
     return (
         <CartContext.Provider value={{
             items,
@@ -48,6 +86,11 @@ const addItem=(currentItem)=>{
             borrarCarrito,
             grandTotal,
             totalCart,
+            buyer,
+            inputs,
+            onChange,
+            orderId,
+            sendOrder,
             
         }
          }>

@@ -6,6 +6,7 @@ import Navbar from '../NavBar';
 import NotFound from '../NotFound/NotFound';
 import Cart from '../cart/cart'
 import Oferta from '../ofertas/ofertas';
+import CartFinal from '../checkout/Final';
 
 
 const Rout = () =>{
@@ -20,6 +21,7 @@ const Rout = () =>{
             <Route path="/checkout" element={<ItemListContainer/>} />
             <Route path="/*" element={<NotFound/>} />
             <Route path="/ofertas" element={<Oferta/>}/>
+            <Route path="/Final" element={<CartFinal/>}/>
             </Switch>
         </BrowserRouter>
     )

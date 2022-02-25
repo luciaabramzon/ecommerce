@@ -2,48 +2,12 @@ import { useContext, useState } from "react"
 import { CartContext } from "../cart/CartContext";
 import { addDoc, collection, doc, getFirestore, updateDoc } from "firebase/firestore";
 import { Link, useParams } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 const Checkout = () => {
-    const {items,grandTotal,borrarCarrito}=useContext(CartContext)
+    const {items,grandTotal,borrarCarrito,buyer,inputs,onChange,orderId,sendOrder}=useContext(CartContext)
     const {id} = useParams ();
 
-    const[buyer,setBuyer]=useState({
-        name:"",
-        phone:"",
-        email:"",
-    })
-
-    const inputs=[
-        {label:"nombre",name:"name"},
-        {label:"phone",name:"phone"},
-        {label:"email",name:"email"}
-    ]
-
-    const onChange=(event)=>{
-        setBuyer({...buyer,[event.target.name]:event.target.value})
-    }
-    
-
-    const [orderId,setOrderId]=useState(null)
-
-    const sendOrder = () =>{
-        const order={
-            buyer,
-            item:items,
-            total:grandTotal(),
-        }
-        const db=getFirestore();
-        const orderCollection=collection(db,"orders")
-
-        addDoc(orderCollection,order).then(({id})=>setOrderId(id))
-       
-            items.forEach(item=> {
-            const docRef=doc(db,"items",item.id);
-            updateDoc(docRef,{stock:item.stock-item.quantity})
-            })
-
-    }
     console.log(orderId)
    
 
@@ -65,8 +29,12 @@ const Checkout = () => {
      </div>
         )
     }
-    return <h2>Tu compra se realizo correctamente, podes seguirla mediante tu ID {orderId}</h2>
-    
+    return (
+        <>
+    <h2>Tu compra se realizo correctamente, podes seguirla mediante tu ID {orderId}</h2>
+    <Link to="/Final"><button>Ver mas </button></Link>
+    </>
+    )
 }
 
 export default Checkout
