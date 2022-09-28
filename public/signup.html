@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Signup</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -16,42 +16,50 @@
         <h2 class="ui teal image header">
           <img src="https://react.semantic-ui.com/logo.png" class="image">
           <div class="content">
-            Bienvenido, ingrese su nombre y contraseña
+            Bienvenido, Registrese en el siguiente formulario
           </div>
         </h2>
-        <form action="http://localhost:8000/login" method="POST" class="ui large form">
+        <form class="ui large form" action="/signup" method="POST">
           <div class="ui stacked">
             <div class="field">
               <div class="ui left icon input">
                 <i class="user icon"></i>
-                <label for="username"></label>
-                <input type="text" name="username" id="username" placeholder="Username">
+                <label for="email"></label>
+                <input type="text" name="username" id="username"  placeholder="Email" required>
               </div>
             </div>
             <div class="field">
               <div class="ui left icon input">
                 <i class="lock icon"></i>
                 <label for="password"></label>
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password" id="password" placeholder="Password" required>
               </div>
             </div>
-            <button class="ui fluid large teal submit button" type="submit" value="Login">Login</button>
-          </div>  
+            <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <br>
+                  <label for="confirmPassword"></label>
+                  <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+                </div>
+              </div>
+              <button class="ui fluid large teal submit button" type="submit">Sign Up</button>
+        </div>  
         </form>
         <br>
         <div class="eight wide column">
           <h4 class="ui teal image header">
-            <div class="content">
-              Si aun no esta registrado:
+             <div class="content">
+              Si ya se encuentra registrado dirigase al Login
             </div>
-            <button class="ui fluid large teal button"><a href="./signup.html">SignUp</a></button>
+            <button class="ui fluid large teal button"><a href="./login.html">Login</a></button>
           </h4>
           </div>
       </div>
     </div>
   </div>
 
-  <script src="./js/login.js">
+<!--   <script src="./js/signup.js"> -->
    
   </script>
 </body>

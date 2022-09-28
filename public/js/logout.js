@@ -1,22 +1,4 @@
-/* 
- async function logout() {
-  try{ 
-const response = await  fetch('/api/logout', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await response.json();
-    if (data.status) {
-      window.location.href = '/logout';
-    } 
-  }
-   catch (error) {
-    console.error(error);
-  }
-}
- */
+
 
 async function getData(){
   try {
@@ -28,7 +10,7 @@ async function getData(){
     });
     const data = await response.json();
     console.log(data)
-    document.getElementById('name').innerHTML=`${data.user.email}!`
+    document.getElementById('name').innerHTML=`${data.user.username}!`
   }
     catch(err){
         console.log(err)
