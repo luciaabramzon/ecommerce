@@ -8,7 +8,7 @@ const passport=require('passport')
 const LocalStrategy=require('passport-local')
 const User=require('./user.schema')
 const {comparePassword, hashPassword}=require('./utils')
-const {authMiddleware, authenticate}=require('./middleware')
+const {authMiddleware}=require('./middleware')
 const {Types}=require('mongoose')
 const {connect}=require('./database');
 
@@ -93,8 +93,7 @@ app.use((req, res, next) => {
   const diff = Date.now() - req.session.ultimaActualizacion;
   console.log(diff);
   if (req.session.user && diff > MAX_IDLE_TIME * 1000) {
-    res.redirect('/login.html')
-    return;
+        return; 
   }
   next();
 });
