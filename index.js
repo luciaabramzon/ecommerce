@@ -1,61 +1,25 @@
 const express = require("express");
 const app = express();
-const port = 8000;
+const PORT = 8000;
 const session = require("express-session");
 const MongoStore=require('connect-mongo')
 const advancedOptions={useNewUrlParser: true, useUnifiedTopology:true}
 const passport=require('passport')
-const LocalStrategy=require('passport-local')
-const User=require('./user.schema')
-const {comparePassword, hashPassword}=require('./utils')
-const {authMiddleware}=require('./middleware')
-const {Types}=require('mongoose')
-const {connect}=require('./database');
+const authMiddleware=require('./middleware')
+const hbs=require('./handlebars.engine')
 
+const {connect}=require('./database');
+require('./passport')
 
 connect()
-
- passport.use("login", new LocalStrategy(async (username, password, done) => {
-  const user = await User.findOne({ username });
-  if(!user){
-    return done(null, null, { message: "Invalid username or password" });
-  }
-  const passHash = user.password;
-  if ( !comparePassword(password, passHash)) {
-    return done(null, null, { message: "Invalid username or password" })
-  } else{
-    return done(null, user);
-  }
-}))
-
-
-passport.use("signup", new LocalStrategy({
-  passReqToCallback: true
-}, async (req, username, password, done) => {
-  const user = await User.findOne({ username });
-  if (user) {   
- return done(null, null);   
-
-  }
-  const hashedPassword = hashPassword(password);
-  const newUser = new User({ username, password: hashedPassword });
-  await newUser.save();
-  return done(null, newUser);
-}));
-
-passport.serializeUser((user, done) => {
-  done(null, user._id);
-});
-
-passport.deserializeUser(async (id, done) => {
-  id = Types.ObjectId(id);
-  const user = await User.findById(id);
-  done(null, user);
-});
 
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.engine("hbs", hbs.engine);
+app.set("view engine", "hbs");
+app.set("views", "./views/pages");
 
 app.use(session({ 
   store:MongoStore.create({
@@ -71,29 +35,16 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-
-app.post("/signup", passport.authenticate("signup", {
-  failureRedirect: "/failSignUp.html",
-}) , (req, res) => {  
-  req.session.user = req.user;
-  res.redirect("/dashboard.html");
-});
-
-app.post("/login", passport.authenticate("login", {
-  failureRedirect: "/failLogin.html",
-}) ,(req, res) => {
-    req.session.user = req.user;
-    res.redirect('/dashboard.html');
-});
-
 const MAX_IDLE_TIME = 10; // segundos
 
-
+// Idle session timeout middleware
 app.use((req, res, next) => {
-  const diff = Date.now() - req.session.ultimaActualizacion;
+  const diff = Date.now() - req.session.ultimaActualizacion; // Diferencia entre la ultima actualizacion y el momento actual
   console.log(diff);
   if (req.session.user && diff > MAX_IDLE_TIME * 1000) {
-        return; 
+    req.session.destroy();
+    res.redirect('/login');
+    return;
   }
   next();
 });
@@ -101,7 +52,7 @@ app.use((req, res, next) => {
 // Refresh session timeout
 app.use((req, res, next) => {
   if (!req.session.ultimaActualizacion && req.session.user) {
-    req.session.ultimaActualizacion = Date.now(); 
+    req.session.ultimaActualizacion = Date.now(); // Timestamp de la ultima actualizacion
     next();
     return;
   }
@@ -115,21 +66,41 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/api/dashboard",authMiddleware, (req, res) => {
- let user=req.user
-  res.json({ status: "ok", user: req.session.user});
-  return 
+
+app.get("/", (req, res) => {
+  res.redirect('/profile');
 });
+
+// Se agregan los middlewares de passport para manejar el login y el signup
+
+app.post("/signup", passport.authenticate("signup", {
+  failureRedirect: "/failSignUp.html",
+}) , (req, res) => {  
+  req.session.user = req.user;
+  res.redirect("/profile");
+});
+
+app.post("/login", passport.authenticate("login", {
+  failureRedirect: "/failLogin.html",
+}) ,(req, res) => {
+    req.session.user = req.user;
+    res.redirect('/profile');
+});
+
+// El manejo de errores es automatico y en caso de fallo se redirige a la ruta 
+// correpondiente
 
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/public/login.html");
 });
 
-
-app.get("/", (req, res) => {
+app.get("/signup", (req, res) => {
   res.sendFile(__dirname + "/public/signup.html");
 });
 
+app.get("/profile", authMiddleware,(req, res) => {
+  res.render(__dirname + "/views/pages/profile", {status:'ok', user: req.session.user});
+});
 
 app.post("/api/logout", (req, res) => {
   req.session.destroy();
@@ -137,9 +108,9 @@ app.post("/api/logout", (req, res) => {
 })
 
 app.get('/logout',(req,res)=>{
-  res.sendFile(__dirname + "/public/logout.html");
+  res.render(__dirname + "/views/pages/logout", {status:'ok', user: req.session.user});
 })
 
-app.listen(port, () => {
-  console.log(`Server: http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`⚡ Server listening :: http://localhost:${PORT}`);
 });
