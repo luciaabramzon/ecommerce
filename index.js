@@ -5,11 +5,11 @@ const session = require("express-session");
 const MongoStore=require('connect-mongo')
 const advancedOptions={useNewUrlParser: true, useUnifiedTopology:true}
 const passport=require('passport')
-const authMiddleware=require('./middleware')
+const authMiddleware=require('./utils/middleware/middleware')
 const hbs=require('./handlebars.engine')
-const {fork}=require('child_process')
-const {connect}=require('./database');
-require('./passport')
+const routeRandom=require('./routes/random.js')
+const {connect}=require('./utils/mongo/database');
+require('./utils/passport/passport')
 const dotenv=require('dotenv')
 dotenv.config()
 connect()
@@ -35,6 +35,7 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
+app.use('/api',routeRandom) 
 
 const MAX_IDLE_TIME = 10;
 app.use((req, res, next) => {
@@ -101,17 +102,6 @@ app.get('/info',(req,res)=>{
   res.render(__dirname+'/views/pages/info',{objeto:objeto})
 })
 
-const randomNumbersGenerator=fork('./random.js')
-
-app.get('/api/randoms',(req,res)=>{
-  const cant=req.query.cant || 5000
-
-  randomNumbersGenerator.on('message',(result)=>{
-    res.status(200).json(result)
-  })
-  randomNumbersGenerator.send(cant)
-})
-
 app.post("/api/logout", (req, res) => {
   req.session.destroy();
   res.json({ status: "ok" });
@@ -121,7 +111,7 @@ app.get('/logout',(req,res)=>{
   res.render(__dirname + "/views/pages/logout", {status:'ok', user: req.session.user});
 })
 
-const p=require('./minimist')
+const p=require('./utils/functions/minimist')
 
 app.listen(p.p, () => {
   console.log(`⚡ Server listening :: http://localhost:${p.p}`);

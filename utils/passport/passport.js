@@ -1,7 +1,7 @@
 const passport=require('passport')
 const LocalStrategy=require('passport-local')
-const User=require('./user.schema')
-const {comparePassword, hashPassword}=require('./utils')
+const User=require('../mongo/user.schema')
+const {comparePassword, hashPassword}=require('../mongo/utils')
 const {Types}=require('mongoose')
 
 passport.use("login", new LocalStrategy(async (username, password, done) => {

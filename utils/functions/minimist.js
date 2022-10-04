@@ -12,5 +12,4 @@ const puertoDefault=parseArgs(process.argv.slice(2),puertoMinimist)
 puertoDefault.otros=puertoDefault._
 delete puertoDefault._
 delete puertoDefault.otros
-console.log(puertoDefault)
 module.exports=puertoDefault
