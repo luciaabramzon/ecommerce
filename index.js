@@ -7,10 +7,11 @@ const advancedOptions={useNewUrlParser: true, useUnifiedTopology:true}
 const passport=require('passport')
 const authMiddleware=require('./middleware')
 const hbs=require('./handlebars.engine')
-
+const {fork}=require('child_process')
 const {connect}=require('./database');
 require('./passport')
-
+const dotenv=require('dotenv')
+dotenv.config()
 connect()
 
 app.use(express.static("public"));
@@ -23,7 +24,7 @@ app.set("views", "./views/pages");
 
 app.use(session({ 
   store:MongoStore.create({
-    mongoUrl:"mongodb://localhost:27017/users",
+    mongoUrl:process.env.mongo_connect,
    mongoOptions:advancedOptions,
    ttl:60*10
   }),
@@ -35,12 +36,9 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-const MAX_IDLE_TIME = 10; // segundos
-
-// Idle session timeout middleware
+const MAX_IDLE_TIME = 10;
 app.use((req, res, next) => {
-  const diff = Date.now() - req.session.ultimaActualizacion; // Diferencia entre la ultima actualizacion y el momento actual
-  console.log(diff);
+  const diff = Date.now() - req.session.ultimaActualizacion; 
   if (req.session.user && diff > MAX_IDLE_TIME * 1000) {
     req.session.destroy();
     res.redirect('/login');
@@ -49,10 +47,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// Refresh session timeout
 app.use((req, res, next) => {
   if (!req.session.ultimaActualizacion && req.session.user) {
-    req.session.ultimaActualizacion = Date.now(); // Timestamp de la ultima actualizacion
+    req.session.ultimaActualizacion = Date.now(); 
     next();
     return;
   }
@@ -71,7 +68,6 @@ app.get("/", (req, res) => {
   res.redirect('/profile');
 });
 
-// Se agregan los middlewares de passport para manejar el login y el signup
 
 app.post("/signup", passport.authenticate("signup", {
   failureRedirect: "/failSignUp.html",
@@ -87,8 +83,6 @@ app.post("/login", passport.authenticate("login", {
     res.redirect('/profile');
 });
 
-// El manejo de errores es automatico y en caso de fallo se redirige a la ruta 
-// correpondiente
 
 app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/public/login.html");
@@ -102,6 +96,22 @@ app.get("/profile", authMiddleware,(req, res) => {
   res.render(__dirname + "/views/pages/profile", {status:'ok', user: req.session.user});
 });
 
+const objeto=require('./process')
+app.get('/info',(req,res)=>{
+  res.render(__dirname+'/views/pages/info',{objeto:objeto})
+})
+
+const randomNumbersGenerator=fork('./random.js')
+
+app.get('/api/randoms',(req,res)=>{
+  const cant=req.query.cant || 5000
+
+  randomNumbersGenerator.on('message',(result)=>{
+    res.status(200).json(result)
+  })
+  randomNumbersGenerator.send(cant)
+})
+
 app.post("/api/logout", (req, res) => {
   req.session.destroy();
   res.json({ status: "ok" });
@@ -111,6 +121,8 @@ app.get('/logout',(req,res)=>{
   res.render(__dirname + "/views/pages/logout", {status:'ok', user: req.session.user});
 })
 
-app.listen(PORT, () => {
-  console.log(`⚡ Server listening :: http://localhost:${PORT}`);
+const p=require('./minimist')
+
+app.listen(p.p, () => {
+  console.log(`⚡ Server listening :: http://localhost:${p.p}`);
 });
