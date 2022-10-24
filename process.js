@@ -1,5 +1,5 @@
 const util = require("util");
-
+const numCpus=require('os').cpus().length
 const objeto=(`
     Argumentos de entrada:
     Sitema operativo: ${process.platform}
@@ -9,6 +9,7 @@ const objeto=(`
     ID del proceso: ${process.pid}
     Carpeta del proyecto:${process.cwd()}
     Titulo del proceso: ${process.title}
+    Numero de procesadores presentes:${numCpus}
 `);
 
 

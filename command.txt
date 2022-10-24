@@ -1,0 +1,45 @@
+Forever:
+(En Command Prompt, dentro de la carpeta del proyecto):
+forever start index.js --watch 8080
+(Se adjunta imagen)
+
+FORK CON PM2:
+(En Command Prompt, dentro de la carpeta del proyecto):
+pm2 start index.js --name="Fork" --watch -- 8081
+(Se adjunta imagen)
+
+Cluster con PM2:
+pm2 start index.js --name="Cluster" -i max --watch -- 8082
+(Se adjunta imagen)
+
+NGINX CONFIGURACION
+en nginx.conf:
+
+    upstream node_app{
+        server 127.0.0.1:8082;
+        server 127.0.0.1:8083;
+        server 127.0.0.1:8084;
+         server 127.0.0.1:8085;
+    }
+ 
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location /test/randoms/{
+            proxy_pass http://node_app;
+        }
+
+        location / {
+            root html;
+            index index.html index.htm;
+        }
+
+Generamos los clusters:
+pm2 start index.js --name="Cluster" -i max --watch -- 8082
+pm2 start index.js --name="Cluster" -i max --watch -- 8083
+pm2 start index.js --name="Cluster" -i max --watch -- 8084
+pm2 start index.js --name="Cluster" -i max --watch -- 8085
+
+desde la consola vamos a la carpeta de nginx y ejecutamos el archivo nginex.exe con el comando nginx
+

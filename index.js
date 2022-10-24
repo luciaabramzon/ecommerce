@@ -65,54 +65,70 @@ app.use((req, res, next) => {
 });
 
 
-app.get("/", (req, res) => {
-  res.redirect('/profile');
-});
 
 
-app.post("/signup", passport.authenticate("signup", {
-  failureRedirect: "/failSignUp.html",
-}) , (req, res) => {  
-  req.session.user = req.user;
-  res.redirect("/profile");
-});
+const cluster=require('cluster')
+const numCpus=require('os').cpus().length
 
-app.post("/login", passport.authenticate("login", {
-  failureRedirect: "/failLogin.html",
-}) ,(req, res) => {
-    req.session.user = req.user;
+if(cluster.isMaster){
+  console.log('numCpus',numCpus)
+  for (let i=0 ; i<numCpus; i++ ){
+    cluster.fork()
+  }
+  cluster.on('exit',()=>{
+    console.log(`worker died ${process.pid}`)
+    cluster.fork()
+  })
+}else{
+  app.get("/", (req, res) => {
     res.redirect('/profile');
-});
-
-
-app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/public/login.html");
-});
-
-app.get("/signup", (req, res) => {
-  res.sendFile(__dirname + "/public/signup.html");
-});
-
-app.get("/profile", authMiddleware,(req, res) => {
-  res.render(__dirname + "/views/pages/profile", {status:'ok', user: req.session.user});
-});
-
-const objeto=require('./process')
-app.get('/info',(req,res)=>{
-  res.render(__dirname+'/views/pages/info',{objeto:objeto})
-})
-
-app.post("/api/logout", (req, res) => {
-  req.session.destroy();
-  res.json({ status: "ok" });
-})
-
-app.get('/logout',(req,res)=>{
-  res.render(__dirname + "/views/pages/logout", {status:'ok', user: req.session.user});
-})
-
+  });
+  
+  
+  app.post("/signup", passport.authenticate("signup", {
+    failureRedirect: "/failSignUp.html",
+  }) , (req, res) => {  
+    req.session.user = req.user;
+    res.redirect("/profile");
+  });
+  
+  app.post("/login", passport.authenticate("login", {
+    failureRedirect: "/failLogin.html",
+  }) ,(req, res) => {
+      req.session.user = req.user;
+      res.redirect('/profile');
+  });
+  
+  
+  app.get("/login", (req, res) => {
+    res.sendFile(__dirname + "/public/login.html");
+  });
+  
+  app.get("/signup", (req, res) => {
+    res.sendFile(__dirname + "/public/signup.html");
+  });
+  
+  app.get("/profile", authMiddleware,(req, res) => {
+    res.render(__dirname + "/views/pages/profile", {status:'ok', user: req.session.user});
+  });
+  
+  const objeto=require('./process')
+  app.get('/info',(req,res)=>{
+    res.render(__dirname+'/views/pages/info',{objeto:objeto})
+  })
+  
+  app.post("/api/logout", (req, res) => {
+    req.session.destroy();
+    res.json({ status: "ok" });
+  })
+  
+  app.get('/logout',(req,res)=>{
+    res.render(__dirname + "/views/pages/logout", {status:'ok', user: req.session.user});
+  })
+  
 const p=require('./utils/functions/minimist')
 
 app.listen(p.p, () => {
-  console.log(`⚡ Server listening :: http://localhost:${p.p}`);
+  console.log(`⚡ Server listening :: http://localhost:${p.p} procesador: ${process.pid}`);
 });
+}
