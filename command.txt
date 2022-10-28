@@ -43,3 +43,9 @@ pm2 start index.js --name="Cluster" -i max --watch -- 8085
 
 desde la consola vamos a la carpeta de nginx y ejecutamos el archivo nginex.exe con el comando nginx
 
+Artillery para node --prof comandos:
+
+artillery quick --count 50 -n 20 "http://localhost/8080/info" > sin_consolelog_artillery.txt
+
+artillery quick --count 50 -n 20 "http://localhost/8080/info" > con_consolelog_artillery.txt
+

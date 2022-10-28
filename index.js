@@ -1,4 +1,6 @@
 const express = require("express");
+const compression=require('compression')
+const gzipMiddleware=compression()
 const app = express();
 const PORT = 8000;
 const session = require("express-session");
@@ -13,6 +15,10 @@ require('./utils/passport/passport')
 const dotenv=require('dotenv')
 dotenv.config()
 connect()
+
+require('./log4js')
+const log4js=require('log4js')
+const logger=log4js.getLogger()
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -65,12 +71,11 @@ app.use((req, res, next) => {
 });
 
 
-
-
 const cluster=require('cluster')
 const numCpus=require('os').cpus().length
 
-if(cluster.isMaster){
+
+ if(cluster.isMaster){
   console.log('numCpus',numCpus)
   for (let i=0 ; i<numCpus; i++ ){
     cluster.fork()
@@ -83,8 +88,7 @@ if(cluster.isMaster){
   app.get("/", (req, res) => {
     res.redirect('/profile');
   });
-  
-  
+
   app.post("/signup", passport.authenticate("signup", {
     failureRedirect: "/failSignUp.html",
   }) , (req, res) => {  
@@ -112,11 +116,20 @@ if(cluster.isMaster){
     res.render(__dirname + "/views/pages/profile", {status:'ok', user: req.session.user});
   });
   
+
   const objeto=require('./process')
-  app.get('/info',(req,res)=>{
+
+  app.get('/infozip',gzipMiddleware,(req,res)=>{
     res.render(__dirname+'/views/pages/info',{objeto:objeto})
   })
   
+
+  app.get('/info',(req,res)=>{
+    logger.log('info','operacion exitosa') 
+    res.render(__dirname+'/views/pages/info',{objeto:objeto})
+  })
+
+
   app.post("/api/logout", (req, res) => {
     req.session.destroy();
     res.json({ status: "ok" });
@@ -126,9 +139,15 @@ if(cluster.isMaster){
     res.render(__dirname + "/views/pages/logout", {status:'ok', user: req.session.user});
   })
   
+    
+  app.get('*',(req,res)=>{
+    logger.log('warn',`Ruta no encontrada ${req.url}`)
+    res.status(400).send(`Ruta no encontrada ${req.url}`)
+  })
+  
 const p=require('./utils/functions/minimist')
 
 app.listen(p.p, () => {
   console.log(`⚡ Server listening :: http://localhost:${p.p} procesador: ${process.pid}`);
 });
-}
+} 
