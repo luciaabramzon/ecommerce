@@ -5,7 +5,7 @@ const app = express();
 const PORT = 8000;
 const session = require("express-session");
 const MongoStore=require('connect-mongo')
-const advancedOptions={useNewUrlParser: true, useUnifiedTopology:true}
+const advancedOptions={useNewUrlParser: true, useUnifiedTopology:true,family:4}
 const passport=require('passport')
 const authMiddleware=require('./utils/middleware/middleware')
 const hbs=require('./handlebars.engine')
@@ -95,12 +95,11 @@ const numCpus=require('os').cpus().length
     req.session.user = req.user;
     res.redirect("/profile");
   });
-  
   app.post("/login", passport.authenticate("login", {
-    failureRedirect: "/failLogin.html",
-  }) ,(req, res) => {
-      req.session.user = req.user;
-      res.redirect('/profile');
+    failureRedirect: "/failSignUp.html",
+  }) , (req, res) => {  
+    req.session.user = req.user;
+    res.redirect("/profile");
   });
   
   
@@ -130,7 +129,7 @@ const numCpus=require('os').cpus().length
   })
 
 
-  app.post("/api/logout", (req, res) => {
+    app.post("/api/logout", (req, res) => {
     req.session.destroy();
     res.json({ status: "ok" });
   })
@@ -151,8 +150,8 @@ const p=require('./utils/functions/minimist')
   console.log(`⚡ Server listening :: http://localhost:${p.p} procesador: ${process.pid}`);
 });
 }   */
-const PORT=8000
-app.listen(process.env.PORT||8080, () => {
+const PORT=8080
+app.listen(process.env.PORT||8000, () => {
   console.log(`⚡ Server listening :: http://localhost:${process.env.PORT} procesador: ${process.pid}`);
 });
 }  
