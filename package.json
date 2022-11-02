@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "nodemon index.js ",
+    "dev": "node index.js",
+    "start": "node index.js ",
     "benchmark": "node benchmark"
   },
   "keywords": [],
@@ -34,6 +34,6 @@
     "util": "^0.12.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.20"
   }
 }
