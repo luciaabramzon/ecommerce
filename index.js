@@ -147,7 +147,7 @@ const numCpus=require('os').cpus().length
   
 const p=require('./utils/functions/minimist')
 
-app.listen(p.p, () => {
+app.listen(p.p ||8080, () => {
   console.log(`⚡ Server listening :: http://localhost:${p.p} procesador: ${process.pid}`);
 });
 } 
