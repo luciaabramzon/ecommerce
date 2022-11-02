@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 
 const connect=async()=>{
-    await mongoose.connect("mongodb://127.0.0.1:27017/users")
+    await mongoose.connect("mongodb+srv://lucianew:Backend2022@cluster0.taani6r.mongodb.net/test")
 }
 
 module.exports={connect}
