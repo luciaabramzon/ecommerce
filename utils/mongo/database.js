@@ -1,7 +1,9 @@
 const mongoose=require('mongoose')
+const dotenv =require ('dotenv')
+dotenv.config()
 
 const connect=async()=>{
-    await mongoose.connect("mongodb+srv://lucianew:Backend2022@cluster0.taani6r.mongodb.net/test")
+    await mongoose.connect(process.env.mongo_atlas)
 }
 
 module.exports={connect}
