@@ -14,7 +14,7 @@ const {connect}=require('./utils/mongo/database');
 require('./utils/passport/passport')
 const dotenv=require('dotenv')
 dotenv.config()
-connect()
+connect() 
 
 require('./log4js')
 const log4js=require('log4js')
