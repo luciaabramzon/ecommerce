@@ -1,1 +1,52 @@
-[2022-10-28T17:00:07.910] [ERROR] default - Valor no numerico
+[2022-11-09T20:09:04.507] [ERROR] default - TypeError: Cannot use 'in' operator to search for 'contentTransferEncoding' in <img https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o= width:30%
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mail-composer\index.js:97:68
+    at Array.map (<anonymous>)
+    at MailComposer.getAttachments (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mail-composer\index.js:86:66)
+    at MailComposer.compile (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mail-composer\index.js:26:34)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mailer\index.js:182:56
+    at processPlugins (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mailer\index.js:279:28)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mailer\index.js:287:17
+    at Mail._convertDataImages (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mailer\index.js:391:20)
+    at Mail._defaultPlugins.compile (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mailer\index.js:31:41)
+    at processPlugins (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\nodemailer\lib\mailer\index.js:283:13)
+[2022-11-10T16:46:29.211] [ERROR] default - [Error: ENOENT: no such file or directory, open 'C:\Users\lu_ab\OneDrive\Desktop\Fullstack\daos\user\images.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\lu_ab\\OneDrive\\Desktop\\Fullstack\\daos\\user\\images.json'
+}
+[2022-11-10T16:48:41.099] [ERROR] default - [Error: ENOENT: no such file or directory, open 'C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\Userslu_abOneDriveDesktopFullstackBackendTercerEntrega\daos\user\images.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\Users\\lu_ab\\OneDrive\\Desktop\\Fullstack\\Backend\\TercerEntrega\\Userslu_abOneDriveDesktopFullstackBackendTercerEntrega\\daos\\user\\images.json'
+}
+[2022-11-10T16:50:23.261] [ERROR] default - [Error: ENOENT: no such file or directory, open 'C:\daos\user\images.json'] {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\daos\\user\\images.json'
+}
+[2022-11-10T16:56:46.449] [ERROR] default - SyntaxError: Unexpected token 'h', "https://me"... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at guardarAvatar (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\utils\passport\passport.js:49:66)
+    at Strategy._verify (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\utils\passport\passport.js:55:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2022-11-10T16:58:39.936] [ERROR] default - TypeError [ERR_INVALID_ARG_TYPE]: The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received type number (123466)
+    at Object.writeFile (node:internal/fs/promises:881:5)
+    at guardarAvatar (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\utils\passport\passport.js:50:27)
+    at Strategy._verify (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\utils\passport\passport.js:56:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+[2022-11-10T18:03:34.294] [ERROR] default - ReferenceError: fs is not defined
+    at guardarAvatar (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\index.js:100:13)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\index.js:106:9
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\express\lib\router\route.js:144:13)
+    at complete (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\passport\lib\middleware\authenticate.js:271:13)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\passport\lib\middleware\authenticate.js:278:15
+    at pass (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\passport\lib\authenticator.js:428:14)
+    at Authenticator.transformAuthInfo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\passport\lib\authenticator.js:450:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\passport\lib\middleware\authenticate.js:275:22
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\node_modules\passport\lib\http\request.js:41:7
