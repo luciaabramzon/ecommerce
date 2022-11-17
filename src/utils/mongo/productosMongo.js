@@ -1,4 +1,4 @@
-const ContenedorMongo=require('../../contenedores/ContenedorMongo')
+const ContenedorMongo=require('../../services/ContenedorMongo')
 
 class ProductosDaoMongo extends ContenedorMongo{
     constructor(){

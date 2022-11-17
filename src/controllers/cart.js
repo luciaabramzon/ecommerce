@@ -1,88 +1,29 @@
-const {Router, json}=require('express')
-const router=Router()
-const express=require('express')
-const {ProductoDao,CarritoDao}=require('../daos/index')
-const User=require('../utils/mongo/user.schema')
-const passport=require('passport')
 
-router.use(express.json());
-router.use(express.urlencoded({extended: true}));
+const {CarritoDao, ProductoDao}=require('../services/index')
+const dbC=new CarritoDao
+const transporter=require('../services/notificaciones/gmail')
+const client=require('../services/notificaciones/whatsapp')
+const User=require('../utils/mongo/user.schema')
 
 require('dotenv').config()
 const MY_EMAIL_ADDRESS=process.env.MY_EMAIL_ADDRESS
 const MY_PHONE=process.env.MY_PHONE
 
-require('../log4js')
+require('../utils/log4js/log4js')
 const log4js=require('log4js')
 const logger=log4js.getLogger()
 
-//productos
-const db=new ProductoDao
-router.get('/productos', async (req,res)=>{
-    const response= await db.getAll()
-    res.json(response)
-})
-
-router.post('/productos',async (req,res)=>{
-    const {title,price,image,description,stock,categoria}=req.body
-    const newProduct= await db.save({
-        title:title,
-        price:price,
-        image:image,
-        description:description,
-        stock:stock,
-        categoria:categoria
-    })
-    res.json('Producto agregado')
-})
-
-router.get('/productos/:id',async(req,res)=>{
-    const id=req.params.id
-    const getById= await db.getById(id)
-    res.json(`Encontrado producto id ${id}`)
-})
-
-router.get('/:categoria',async(req,res)=>{
-    const categoria=req.query.categoria
-    console.log(categoria)
-    const cat=await db.getByCategoria(categoria)
-    res.json(`Los productos encontrados en la categoria mencionada son: ${cat}`)
-})
-
-router.put('/productos/:id', async(req,res)=>{
-    const {title,price,image,description,stock,categoria}=req.body
-    const id=req.params.id
-    if(!id){
-        res.json('Producto No encontrado')
-    } else{
-        const newProduct={
-            title:title,
-            price:price,
-            image:image,
-            description:description,
-            stock:stock,
-            categoria:categoria,
-        }
-        db.updateById(id,newProduct)
-        res.json('Acutalizado')
+async function getAllCart (req,res){
+    try{
+        const response= await dbC.getAll()
+        res.json(response)
+    }catch(err){
+        logger.error(err)
     }
+}
 
-})
-
-router.delete('/productos/:id',async(req,res)=>{
-    const id=req.params.id
-    const productDelete=db.deleteById(id)
-    res.json(`Producto eliminado ${id}`)
-})
-
-//carrito
-const dbC=new CarritoDao
-    router.get('/carrito', async (req,res)=>{
-    const response= await dbC.getAll()
-    res.json(response)
-    })
-
-    router.post('/carrito',async (req,res)=>{
+async function addCart(req,res){
+    try{
         const {carrito,productos}=req.body
         const newCarrito={
             carrito:carrito,
@@ -91,15 +32,24 @@ const dbC=new CarritoDao
         }
         await dbC.save(newCarrito)
         res.end('Nuevo Carrito guardado')
-    })
+    }catch(err){
+        logger.error(err)
+    }
+}
 
-    router.get('/carrito/:id',async(req,res)=>{
+async function getCartById(req,res){
+    try{
         const id=req.params.id
         const getById= await dbC.getById(id)
         res.json(`Encontrado carrito id ${id}`)
-    })
+    }catch(err){
+        logger.error(err)
+    }
+}
 
-    router.post('/carrito/:id/productos/:id_producto', async(req,res)=>{
+async function updateCartById(req,res){
+    try{
+        const db=new ProductoDao
         const id=req.params.id
         const id_producto=req.params.id_producto
         const producto=await db.getById(id_producto)
@@ -116,15 +66,24 @@ const dbC=new CarritoDao
         console.log(newCart)
         const update= await dbC.updateByCartId(id,newCart)
          res.json(`Actualizado carrito ${id}`) 
-    })
+    }catch(err){
+        logger.error(err)
+    }
+}
 
-    router.delete('/carrito/:id',async(req,res)=>{
+async function deleteCartById(req,res){
+    try{
         const id=req.params.id
         const carritoDelete=dbC.deleteById(id)
         res.json(`Carrito eliminado ${id}`)
-    })
+    }catch(err){
+        logger.error(err)
+    }
+}
 
-    router.delete('/carrito/:id/productos/:id_producto', async(req,res)=>{
+async function deleteCartProductById(req,res){
+    try{
+        const db=new ProductoDao
         const id=req.params.id
         const id_producto=req.params.id_producto
         const producto=await db.getById(id_producto)
@@ -132,16 +91,14 @@ const dbC=new CarritoDao
         newCart.productos=newCart.productos.filter(prod=>prod.id_productos!==id_producto)
         dbC.updateCart(id,newCart) 
         res.json(`Eliminado producto id ${id_producto} del carrito ${id}`)
-    })
+    }catch(err){
+        logger.error(err)
+    }
 
-    //compra
-    const transporter=require('../notificaciones/gmail')
-    const client=require('../notificaciones/whatsapp')
-    
-    router.use(passport.initialize())
-    router.use(passport.session())
+}
 
-    router.post('/carrito/:id/comprar/:username',async (req,res)=>{
+async function comprar (req,res){ 
+    try{
         const id=req.params.id
         const username=req.params.username
         const newCart=await dbC.getById(id)
@@ -188,8 +145,17 @@ const dbC=new CarritoDao
         }
          sendWhatsapp()   
          res.end('Gracias por comprar')
-    })
+    }catch(err){
+        logger.error(err)
+    }
+    }
 
-
-    
-module.exports= router
+module.exports={
+    getAllCart,
+    addCart,
+    getCartById,
+    updateCartById,
+    deleteCartById,
+    deleteCartProductById,
+    comprar
+}

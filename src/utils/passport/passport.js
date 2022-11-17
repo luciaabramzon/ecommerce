@@ -8,13 +8,14 @@ const fs=require('fs')
 require('dotenv').config()
 const MY_EMAIL_ADDRESS=process.env.MY_EMAIL_ADDRESS
 
-require('../../log4js')
+require('../log4js/log4js')
 const log4js=require('log4js')
 const logger=log4js.getLogger()
-const transporter=require('../../notificaciones/gmail')
+const transporter=require('../../services/notificaciones/gmail')
 
 passport.use("login", new LocalStrategy(async (username, password, done) => {
-  const user = await User.findOne({ username });
+
+  const user = await User.findOne({ username }).lean()
   if(!user){
     return done(null, null, { message: "Invalid username or password" });
   }
