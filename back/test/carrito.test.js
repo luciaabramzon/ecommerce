@@ -13,7 +13,6 @@ describe('Test Carrito',()=>{
         const response=await axios.get(`${URL}/carrito`)
         expect(response.status).to.eql(200)
         expect(response.data).to.be.an('array')
-
 }) 
 
 })
