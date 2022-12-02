@@ -9,7 +9,7 @@ const logger=log4js.getLogger()
 async function getAllProducts (req,res){
     try{
         const response= await db.getAll()
-        res.json(response)
+        res.status(200).json(response)
     }catch(err){
         logger.error(err)
     }
@@ -26,7 +26,7 @@ async function addProduct(req,res){
             stock:stock,
             categoria:categoria
         })
-        res.json('Producto agregado')
+        res.status(201).json('Producto agregado')
     }catch(err){
         logger.error(err)
     }
@@ -37,7 +37,7 @@ async function getProductById(req,res){
     try{
         const id=req.params.id
         const getById= await db.getById(id)
-        res.json(`Encontrado producto id ${id}`)
+        res.status(200).json(`Encontrado producto id ${id}`)
     }catch(err){
         logger.error(err)
     }
@@ -70,7 +70,7 @@ async function updateProductById(req,res){
                 categoria:categoria,
             }
             db.updateById(id,newProduct)
-            res.json('Acutalizado')
+            res.json(newProduct)
         }
     }catch(err){
         logger.error(err)

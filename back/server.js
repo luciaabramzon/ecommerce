@@ -20,6 +20,13 @@ app.engine("hbs", hbs.engine);
 app.set('views', "./views");
 app.set("view engine", "hbs");
 
+const swaggerUi =require('swagger-ui-express') 
+const swaggerDoc=require('swagger-jsdoc') 
+const  SwaggerOptions =require('./src/utils/swagger.config') 
+
+const specs=swaggerDoc(SwaggerOptions)
+
+app.use('/api/docs',swaggerUi.serve,swaggerUi.setup(specs))
 app.use(express.json());
 app.use(cors())
 app.use(express.urlencoded({extended: true}));

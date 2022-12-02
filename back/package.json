@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node server.js",
     "start": "nodemon server.js",
-    "benchmark": "node benchmark"
+    "benchmark": "node benchmark",
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -34,10 +35,15 @@
     "nodemailer": "^6.8.0",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "swagger-jsdoc": "^6.2.5",
+    "swagger-ui-express": "^4.6.0",
     "twilio": "^3.83.1",
     "util": "^0.12.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "chai": "^4.3.7",
+    "mocha": "^10.1.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.1"
   }
 }

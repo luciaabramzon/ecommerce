@@ -1,26 +1,29 @@
 import axios from "axios"
 import { useState } from "react"
-import { Form } from "react-router-dom"
+import { Form, Link } from "react-router-dom"
+import { addProduct } from "../../api/services"
 const URL='http://localhost:8000/productos'
 
 const AddProducts=()=>{
     const [title,setTitle]=useState('')
     const [price,setPrice]=useState('')
     const [description,setDescription]=useState('')
-    const [category,setCategory]=useState('')
+    const [categoria,setCategoria]=useState('')
     const [image,setImage]=useState('')
     const[stock,setStock]=useState('')
 
     const add=async(e)=>{
-        if(title===''||price===''||description===''|| category===''|| image===''|| stock ===''){
+        if(title===''||price===''||description===''|| categoria===''|| image===''|| stock ===''){
             alert('Todos los campos son obligatorios')
             return
         }else{
             e.preventDefault()
-            await axios.post(URL,{title,price,description,category,image,stock})
+            const res=await addProduct({title,price,description,categoria,image,stock})
+            return res
         }
     }
 
+   
     return(
         <>
         <form onSubmit={add}>
@@ -44,8 +47,8 @@ const AddProducts=()=>{
             />
             <label>Category</label>
             <input
-            value={category}
-            onChange={(e)=>setCategory(e.target.value)}
+            value={categoria}
+            onChange={(e)=>setCategoria(e.target.value)}
             type='text'
             />
             <label>Image</label>
@@ -60,9 +63,13 @@ const AddProducts=()=>{
             onChange={(e)=>setStock(e.target.value)}
             type='number'
             />
+            
             <button type='submit'>
-                Agregar
+            Agregar
             </button>
+            <Link to='/product'>
+                Ver Productos
+            </Link>   
         </form>
         </>
     )
