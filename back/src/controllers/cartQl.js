@@ -1,7 +1,7 @@
 const crypto=require('crypto')
 
 class Cart{
-    constructor(id,{title,products}){
+    constructor(id,{title,products,prod_id}){
         this.id=id
         this.title=title
         this.products=products
@@ -34,17 +34,11 @@ function getAllCarts(){
         return newCart   
     }
 
-function addProductToCart({id,product}){
-   const cart= CartContainer.find(cart=> cart.id===id)
-   const NewProduct={
-    title:product.title,
-    price:product.price,
-    description: product.description,
-    category:product.category,
-    image:product.image,
-    stock:product.stock
-   }
-   const newCart=cart.push(NewProduct)
+function addProductToCart({id,data}){
+   const cart= CartContainer[id]
+   const NewProduct=data
+   console.log(NewProduct)
+   const newCart=new Cart(cart,NewProduct)
    return newCart
 }
 
@@ -66,14 +60,13 @@ function deleteCart({id}){
     return deleteCart
 }
 
-function deleteProductFromCart({id}){
+function deleteProductFromCart({id,prod_id}){
     if(!CartContainer[id]){
         throw new Error('Cart not found')
     }
     const deleteCart=CartContainer[id]
-    const ProductToDelete=ProductsContainer[id]
-    delete ProductToDelete
-    return ProductToDelete
+    CartContainer[id].products=CartContainer[id].products.filter(prod=>prod.id!==prod_id)
+    return CartContainer[id]
 
 }
 

@@ -38,7 +38,7 @@ const deleteCart=`
     deleteCart(id: ID!): Carts
 `
 const deleteProductFromCart=`
-    deleteProductFromCart(id: ID!, product_id: ID!): Carts
+    deleteProductFromCart(id: ID!, prod_id: ID!): Carts
 `
 
 
