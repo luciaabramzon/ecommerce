@@ -5,7 +5,7 @@ const dotenv=require('dotenv')
 dotenv.config()
 const PORT = process.env.PORT || 8080;
 const passport=require('passport')
-
+const {graphqlHTTP}=require('express-graphql')
 const session = require("express-session");
 const MongoStore=require('connect-mongo')
 const advancedOptions={useNewUrlParser: true, useUnifiedTopology:false,family:4}
@@ -15,6 +15,21 @@ const {connect}=require('./src/daos/mongo/database');
 const product=require('./src/routes/productos')
 const cart=require('./src/routes/cart')
 const UserRouter=require('./src/routes/user')
+const schema=require('./src/graphQl/schemaQl')
+const{getProduct,
+  getProducts,
+  createProduct,
+  updateProduct,
+  deleteProduct}=require('./src/controllers/productQl')
+const {
+  getCartById,
+  getAllCarts,
+  createCart,
+  addProductToCart,
+  updateCart,
+  deleteCart,
+  deleteProductFromCart
+}=require('./src/controllers/cartQl')
 
 app.engine("hbs", hbs.engine);
 app.set('views', "./views");
@@ -29,6 +44,7 @@ const specs=swaggerDoc(SwaggerOptions)
 app.use('/api/docs',swaggerUi.serve,swaggerUi.setup(specs))
 app.use(express.json());
 app.use(cors())
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 app.use(session({ 
@@ -76,10 +92,30 @@ app.use(session({
   const cluster=require('cluster');
   const numCpus=require('os').cpus().length
   
+  app.use("/graphql", graphqlHTTP({
+    schema,
+    rootValue: {
+      getProduct,
+      getProducts,
+      createProduct,
+      updateProduct,
+      deleteProduct,
+      getCartById,
+      getAllCarts,
+      createCart,
+      addProductToCart,
+      updateCart,
+      deleteCart,
+      deleteProductFromCart
+    },
+    graphiql: true,
+  }))
+  
       
 app.use("/productos", product)
 app.use("/carrito", cart)
 app.use('/',UserRouter) 
+
 
   
    if(cluster.isMaster){
