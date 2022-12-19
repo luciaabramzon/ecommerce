@@ -1,6 +1,4 @@
-
-const {ProductoDao}=require('../daos/index')
-const db=new ProductoDao
+const {db}=require('./databases')
 
 require('../utils/log4js/log4js')
 const log4js=require('log4js')
@@ -93,5 +91,5 @@ module.exports={
     getProductById,
     getProductByCategoria,
     updateProductById,
-    deleteById
+    deleteById,
 }

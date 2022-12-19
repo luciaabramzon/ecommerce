@@ -21,6 +21,7 @@ switch (process.env.DATABASE){
 }
 
 module.exports= {
+    CarritoDao,
     ProductoDao,
-    CarritoDao}
+   }
 

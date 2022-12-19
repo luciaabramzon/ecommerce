@@ -66,3 +66,168 @@
   name: 'CastError',
   message: 'Cast to ObjectId failed for value "video" (type string) at path "_id" for model "productos"'
 }
+[2022-12-16T17:34:27.389] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-16T17:36:20.036] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-16T17:37:27.147] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-16T17:40:37.908] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-16T17:46:43.780] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-16T17:49:03.436] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-16T17:50:11.177] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-16T17:51:40.281] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:19)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-18T11:58:00.510] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-18T12:01:03.668] [ERROR] default - TypeError: db.getById is not a function
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:57:33)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:376:14)
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:376:14)
+    at Function.process_params (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:421:3)
+[2022-12-18T12:29:37.270] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-18T12:40:26.944] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:52:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-18T12:47:37.808] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:58:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-18T13:18:43.017] [ERROR] default - OverwriteModelError: Cannot overwrite `productos` model once compiled.
+    at Mongoose.model (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\mongoose\lib\index.js:554:13)
+    at new ContenedorMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\contenedores\ContenedorMongo.js:12:34)
+    at new ProductosDaoMongo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\daos\mongo\productosMongo.js:5:9)
+    at updateCartById (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\cart.js:57:18)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at param (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:365:14)
+[2022-12-19T16:02:26.379] [ERROR] default - TypeError: db.save is not a function
+    at addProduct (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\products.js:21:36)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:47:12)

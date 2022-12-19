@@ -1,9 +1,9 @@
-
-const {CarritoDao, ProductoDao}=require('../daos/index')
-const dbC=new CarritoDao
+const {dbC}=require('./databases')
 const transporter=require('../services/notificaciones/gmail')
 const client=require('../services/notificaciones/whatsapp')
 const User=require('../daos/mongo/user.schema')
+
+
 
 require('dotenv').config()
 const MY_EMAIL_ADDRESS=process.env.MY_EMAIL_ADDRESS
@@ -11,6 +11,7 @@ const MY_PHONE=process.env.MY_PHONE
 
 require('../utils/log4js/log4js')
 const log4js=require('log4js')
+const { db } = require('../daos/mongo/user.schema')
 const logger=log4js.getLogger()
 
 async function getAllCart (req,res){
@@ -41,7 +42,7 @@ async function getCartById(req,res){
     try{
         const id=req.params.id
         const getById= await dbC.getById(id)
-        res.json(`Encontrado carrito id ${id}`)
+        res.json(`Encontrado carrito id ${id},Carrito: ${getById}`)
     }catch(err){
         logger.error(err)
     }
@@ -49,9 +50,9 @@ async function getCartById(req,res){
 
 async function updateCartById(req,res){
     try{
-        const db=new ProductoDao
         const id=req.params.id
         const id_producto=req.params.id_producto
+        const {db}=require('./databases')
         const producto=await db.getById(id_producto)
         const newCart=await dbC.getById(id)
          const newCarrito={
@@ -63,9 +64,8 @@ async function updateCartById(req,res){
                 id:id_producto
             }
         newCart.productos.push(newCarrito)
-        console.log(newCart)
         const update= await dbC.updateByCartId(id,newCart)
-         res.json(`Actualizado carrito ${id}`) 
+         res.json(`Actualizado carrito ${id}`)   
     }catch(err){
         logger.error(err)
     }
@@ -83,12 +83,12 @@ async function deleteCartById(req,res){
 
 async function deleteCartProductById(req,res){
     try{
-        const db=new ProductoDao
         const id=req.params.id
         const id_producto=req.params.id_producto
+        const {db}=require('./databases')
         const producto=await db.getById(id_producto)
         const newCart=await dbC.getById(id)
-        newCart.productos=newCart.productos.filter(prod=>prod.id_productos!==id_producto)
+        newCart.productos=newCart.productos.find(prod=>prod.id_productos!==id_producto)
         dbC.updateCart(id,newCart) 
         res.json(`Eliminado producto id ${id_producto} del carrito ${id}`)
     }catch(err){

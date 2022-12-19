@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { deleteProduct, getAllProducts, updateProduct } from '../../api/services'
+import ShowCarts from '../Cart/ShowCarts'
 
 
 const ShowProducts=()=>{
@@ -112,6 +114,8 @@ const ShowProducts=()=>{
             Editar
             </button>
             </form>
+            <button>Ver carritos</button>
+            <ShowCarts products={products}/>
              </div>
         </>
     )
