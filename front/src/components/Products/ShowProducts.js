@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { deleteProduct, getAllProducts, updateProduct } from '../../api/services'
@@ -14,16 +15,18 @@ const ShowProducts=()=>{
    const[stock,setStock]=useState('')
    const [id,setId]=useState('')
 
-   useEffect(()=>{
+
+    const getProducts=async()=>{
+   const res=await getAllProducts()
+        console.log(res)
+        setProducts(res) 
+    }
+
+    useEffect(()=>{
         getProducts()
     },[])
 
-    const getProducts=async()=>{
-        const res=await getAllProducts()
-        setProducts(res)
-    }
-
-    const deleteProd=async(id)=>{
+const deleteProd=async(id)=>{
         deleteProduct(id)
    } 
 
@@ -40,7 +43,7 @@ const ShowProducts=()=>{
    const edit=async (id)=>{
      const res=await updateProduct(id,{title,price,description,categoria,image,stock,id})
     console.log(res)
-   }
+   } 
 
     return(
         <>
@@ -50,30 +53,21 @@ const ShowProducts=()=>{
                     <thead>
                     <th>Titulo</th>
                     <th>Precio</th>
-                    <th>Descripcion</th>
-                    <th>Categoria</th>
                     <th>Imagen</th>
-                    <th>Stock</th>
-                    <th>Id</th>
                     </thead>
                     <tbody>
                         {products.map((prod)=>(
                             <tr key={prod._id}>
                             <td>{prod.title}</td>
                             <td>{prod.price}</td>
-                            <td>{prod.description}</td>
-                            <td>{prod.categoria}</td>
-                            <td>{prod.image}</td>
-                            <td>{prod.stock}</td>
-                            <td><button onClick={()=>deleteProd(prod._id)}>Eliminar Producto</button></td>
-                            <td><button onClick={()=>editProd(prod.title,prod.price,prod.description,prod.categoria,prod.image,prod.stock,prod._id)}>Editar producto</button></td>
+                            <td><img src={prod.image} width="15%"/></td>
                             <td><button>Agregar al carrito</button></td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-            <form>
-                <label>Title</label>
+             {/*  <form>
+              <label>Title</label>
             <input
             value={title}
             onChange={(e)=>{setTitle(e.target.value)}}
@@ -115,8 +109,8 @@ const ShowProducts=()=>{
             </button>
             </form>
             <button>Ver carritos</button>
-            <ShowCarts products={products}/>
-             </div>
+            <ShowCarts products={products}/>*/}
+             </div> 
         </>
     )
 

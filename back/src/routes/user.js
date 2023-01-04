@@ -24,10 +24,12 @@ UserRouter.use(passport.session())
 UserRouter.get('/',redirectProfile)
 UserRouter.post('/signup',passport.authenticate("signup", {
     failureRedirect: "/failSignUp.html",
+    session:false
   }),signUp)
-UserRouter.post('/login',passport.authenticate("login", {
-    failureRedirect: "/failSignUp.html",
-  }) , login)
+UserRouter.post('/login',passport.authenticate("login",{
+  failureRedirect:"/failSignUp.html",
+  session:false
+}) , login)
 UserRouter.get('/login',loginPage)
 UserRouter.get('/signup',signUpPage)
 UserRouter.get('/profile',authMiddleware,profile)

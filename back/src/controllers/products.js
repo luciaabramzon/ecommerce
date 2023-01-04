@@ -1,4 +1,5 @@
 const {db}=require('./databases')
+let path=require('path')
 
 require('../utils/log4js/log4js')
 const log4js=require('log4js')
@@ -7,7 +8,7 @@ const logger=log4js.getLogger()
 async function getAllProducts (req,res){
     try{
         const response= await db.getAll()
-        res.status(200).json(response)
+        res.json(response)
     }catch(err){
         logger.error(err)
     }

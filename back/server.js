@@ -43,7 +43,10 @@ const specs=swaggerDoc(SwaggerOptions)
 
 app.use('/api/docs',swaggerUi.serve,swaggerUi.setup(specs))
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+  origin:"http://localhost:3000",
+  credentials:true
+}))
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));

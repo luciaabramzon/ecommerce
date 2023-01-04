@@ -231,3 +231,17 @@
     at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:280:10)
     at Function.handle (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:175:3)
     at router (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\index.js:47:12)
+[2023-01-02T13:25:43.523] [ERROR] default - ReferenceError: response is not defined
+    at getAllProducts (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\products.js:11:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2023-01-02T16:15:32.532] [ERROR] default - TypeError: Cannot destructure property 'user' of 'req.session.user' as it is undefined.
+    at login (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\src\controllers\user.js:31:14)
+    at Layer.handle [as handle_request] (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\express\lib\router\route.js:144:13)
+    at complete (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\passport\lib\middleware\authenticate.js:271:13)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\passport\lib\middleware\authenticate.js:278:15
+    at pass (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\passport\lib\authenticator.js:428:14)
+    at Authenticator.transformAuthInfo (C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\passport\lib\authenticator.js:450:5)
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\passport\lib\middleware\authenticate.js:275:22
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\passport\lib\http\request.js:41:7
+    at C:\Users\lu_ab\OneDrive\Desktop\Fullstack\Backend\TercerEntrega\back\node_modules\passport\lib\sessionmanager.js:51:9

@@ -10,25 +10,24 @@ let path=require('path')
     res.redirect('/login')
   };
 
-  const json_avatar=fs.readFileSync('./src/utils/local/images.json','utf-8')
-  let avatares=JSON.parse(json_avatar)
+/*   const json_avatar=fs.readFileSync('./src/utils/local/images.json','utf-8')
+  let avatares=JSON.parse(json_avatar) */
 
    function signUp(req, res) {  
       req.session.user = req.user;
-      const avatar=req.user.avatar
-      const newAvatar={avatar}
-      avatares.push(newAvatar)
-    res.redirect("/profile");
-/*     const json_avatar=JSON.stringify(avatares)
-    fs.writeFileSync('.src/utils/local/images.json',json_avatar,'utf-8') */
-  };
+      res.send('success')
+    };
   
-   function login(req, res){  
+    function login(req, res){  
     req.session.user = req.user;
-    res.render(path.resolve("views/pages/profile"),{status:'ok', user: req.session.user});
-  };
-  
-  
+    if(!req.user){
+      res.send('error')
+    }else{
+      /* res.send('success') */
+      res.send(req.user)
+    } 
+   };  
+
   function loginPage (req, res)  {
     res.sendFile(path.resolve('public/login.html'));
   }

@@ -1,7 +1,19 @@
 import client from './index'
 
+export async function signUp({username, password,name,address,tel,avatar,age}){
+    const {data}=await client.post('/signup',{username, password,name,address,tel,avatar,age})
+    console.log(data)
+    return data
+}
+
+export async function login({username,password}){
+    const {data}=await client.post('/login',{username,password})
+    return data
+}
+
 export async function getAllProducts(){
     const {data}=await client.get('/productos')
+    console.log(data)
     return data
 }
 

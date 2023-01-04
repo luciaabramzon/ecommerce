@@ -4,7 +4,7 @@ const Schema=mongoose.Schema
 const userSchema=new Schema({
     name:{type:String},
     address:{type:String},
-    age:{type:Date},
+    age:{type:String},
     tel:{type:Number},
     username:{type:String},
     password:{type:String},
