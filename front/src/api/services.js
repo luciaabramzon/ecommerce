@@ -1,5 +1,10 @@
 import client from './index'
 
+export async function logOut(){
+    const {data}= await client.post('/api/logout')
+    return data
+}
+
 export async function signUp({username, password,name,address,tel,avatar,age}){
     const {data}=await client.post('/signup',{username, password,name,address,tel,avatar,age})
     console.log(data)

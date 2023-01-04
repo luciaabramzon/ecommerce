@@ -47,7 +47,7 @@ let path=require('path')
 
   function logout(req, res)  {
     req.session.destroy();
-    res.json({ status: "ok" });
+    res.send('ok');
   }
   
   function logoutPage(req,res){ 
