@@ -25,3 +25,7 @@ CarritoRouter.post('/:id/productos/:id_producto',updateCartById)
 CarritoRouter.delete('/:id',deleteCartById)
 CarritoRouter.delete('/:id/productos/:id_producto',deleteCartProductById)
 CarritoRouter.post('/:id/comprar/:username',comprar)
+
+Usuarios existentes:
+username:clark@test.com 
+password:123456
