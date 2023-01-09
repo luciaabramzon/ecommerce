@@ -1,10 +1,6 @@
 import client from './index'
 
-export async function loginPage({username}){
-    const {data}=await client.get('/login',{username})
-    console.log(username)
-    return data
-}
+
 
 export async function logOut(){
     const {data}= await client.post('/api/logout')
