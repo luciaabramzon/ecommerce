@@ -12,7 +12,7 @@ const {
 ProductosRouter.get('/',getAllProducts)
 ProductosRouter.post('/',addProduct)
 ProductosRouter.get('/:id',getProductById)
-ProductosRouter.get('/:categoria',getProductByCategoria)
+ProductosRouter.get('/categoria/:category',getProductByCategoria)
 ProductosRouter.put('/:id',updateProductById)
 ProductosRouter.delete('/:id',deleteById)
 

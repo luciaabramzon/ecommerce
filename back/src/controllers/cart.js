@@ -64,7 +64,8 @@ async function updateCartById(req,res){
                 image:producto.image,
                 description:producto.description,
                 stock:producto.stock,
-                id:id_producto
+                id:id_producto,
+                category:category
             }
         newCart.productos.push(newCarrito)
         const update= await dbC.updateByCartId(id,newCart)

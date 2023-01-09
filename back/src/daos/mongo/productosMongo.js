@@ -5,7 +5,7 @@ class ProductosDaoMongo extends ContenedorMongo{
         super ('productos',{
             title:{type:String,required:true},
             price:{type:Number,required:true},
-            categoria:{type:String,required:true},
+            category:{type:String,required:false},
             image:{type:String,required:true},
             description:{type:String,required:true},
             stock:{type:Number,required:true}
