@@ -6,11 +6,13 @@ const Home=()=>{
 
     const user=localStorage.getItem('login')
     const userJson=JSON.parse(user)
+
 const logout= async e=>{
    const res=await logOut()
-   console.log(res)
+
     if(res==='ok'){
         alert(`Esperamos volver a verte ${userJson.name}`)
+        localStorage.removeItem('login')
         window.location.href='/'
     }
 }

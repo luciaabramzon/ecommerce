@@ -1,15 +1,13 @@
-import React, {  useState } from "react"
+import React, {  useContext, useState } from "react"
 import { login } from "../../api/services"
-import axios, { AxiosError } from "axios"
-import Register from "./Register"
 import { Link } from "react-router-dom"
+import { UserContext } from "../../api/context/UserContext"
 
 
 const Login = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-
-  const URL="http://localhost:8000/login"
+  const {userSession,setSession}=useContext(UserContext)
 
   const formSubmitHandler = async (e) => {
     e.preventDefault()
@@ -18,14 +16,17 @@ const Login = () => {
         return;
       }
       const res=await login({username,password})
-       if(res==='error'){
+
+      if(res==='<h1>Error</h1>'){
+        alert('Usuario no encontrado o contraseña incorrecta')
         window.location.href='/register'
+      
       }else{
         alert('bienvenido')
         const user=JSON.stringify(res)
         localStorage.setItem('login',user)
         window.location.href='/home'
-      } 
+      }
   }
 
   return (

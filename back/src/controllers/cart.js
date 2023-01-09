@@ -12,13 +12,15 @@ const MY_PHONE=process.env.MY_PHONE
 require('../utils/log4js/log4js')
 const log4js=require('log4js')
 const { db } = require('../daos/mongo/user.schema')
+const { default: mongoose } = require('mongoose')
 const logger=log4js.getLogger()
 
 async function getAllCart (req,res){
     try{
         const response= await dbC.getAll()
-        res.json(response)
+            res.json(response)
     }catch(err){
+        res.send('error')
         logger.error(err)
     }
 }
@@ -27,22 +29,23 @@ async function addCart(req,res){
     try{
         const {carrito,productos}=req.body
         const newCarrito={
-            carrito:carrito,
+            carrito:'carrito nuevo',
             time:Date.now(),
             productos:productos
         }
         await dbC.save(newCarrito)
-        res.end('Nuevo Carrito guardado')
+        res.send(newCarrito)
     }catch(err){
         logger.error(err)
     }
 }
 
+
 async function getCartById(req,res){
     try{
         const id=req.params.id
         const getById= await dbC.getById(id)
-        res.json(`Encontrado carrito id ${id},Carrito: ${getById}`)
+        res.send(getById)
     }catch(err){
         logger.error(err)
     }
@@ -52,11 +55,11 @@ async function updateCartById(req,res){
     try{
         const id=req.params.id
         const id_producto=req.params.id_producto
-        const {db}=require('./databases')
+         const {db}=require('./databases')
         const producto=await db.getById(id_producto)
         const newCart=await dbC.getById(id)
-         const newCarrito={
-                titleProducto:producto.title,
+        const newCarrito={
+                titleProducto:producto.title, 
                 price:producto.price,
                 image:producto.image,
                 description:producto.description,
@@ -65,7 +68,7 @@ async function updateCartById(req,res){
             }
         newCart.productos.push(newCarrito)
         const update= await dbC.updateByCartId(id,newCart)
-         res.json(`Actualizado carrito ${id}`)   
+         res.json(`Actualizado carrito ${id}`)     
     }catch(err){
         logger.error(err)
     }
@@ -88,9 +91,9 @@ async function deleteCartProductById(req,res){
         const {db}=require('./databases')
         const producto=await db.getById(id_producto)
         const newCart=await dbC.getById(id)
-        newCart.productos=newCart.productos.find(prod=>prod.id_productos!==id_producto)
-        dbC.updateCart(id,newCart) 
-        res.json(`Eliminado producto id ${id_producto} del carrito ${id}`)
+        newCart.productos=newCart.productos.filter(prod=>prod.id!==id_producto)
+        dbC.updateCart(id,newCart)
+        res.send(newCart)
     }catch(err){
         logger.error(err)
     }

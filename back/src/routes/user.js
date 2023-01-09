@@ -30,7 +30,7 @@ UserRouter.post('/login',passport.authenticate("login",{
   failureRedirect:"/failSignUp.html",
   session:false
 }) , login)
-UserRouter.get('/login',loginPage)
+UserRouter.get('/login', loginPage)
 UserRouter.get('/signup',signUpPage)
 UserRouter.get('/profile',authMiddleware,profile)
 UserRouter.get('/info',infoUser)

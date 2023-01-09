@@ -7,7 +7,7 @@ class CarritoDaoMongo extends ContenedorMongo{
             time:{type:String},
             productos:{type:Array,required:true}
         })
-    }
+    } 
 }
 
 module.exports= CarritoDaoMongo

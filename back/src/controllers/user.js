@@ -3,6 +3,7 @@ const fs=require('fs')
 require('../utils/log4js/log4js')
 const log4js=require('log4js')
 const logger=log4js.getLogger()
+const User=require('../daos/mongo/user.schema')
 
 let path=require('path')
 
@@ -23,13 +24,16 @@ let path=require('path')
     if(!req.user){
       res.send('error')
     }else{
-      /* res.send('success') */
-      res.send(req.user)
+      res.json(req.user)
     } 
    };  
 
-  function loginPage (req, res)  {
-    res.sendFile(path.resolve('public/login.html'));
+ async function loginPage (req, res)  {
+    const username=req.body
+
+   const newUser=await User.findOne({username})
+    console.log(newUser)
+    return newUser  
   }
   
   function signUpPage(req, res){

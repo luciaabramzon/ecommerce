@@ -1,24 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { deleteProduct, getAllProducts, updateProduct } from '../../api/services'
+import { Link, useParams } from 'react-router-dom'
+import { deleteProduct, getAllProducts, updateProduct,addProductToCart, getCarts,addCart, getCartById, getProductById } from '../../api/services'
 import ShowCarts from '../Cart/ShowCarts'
 
 
 const ShowProducts=()=>{
    const [products,setProducts]=useState([])
-   const [title,setTitle]=useState('')
-   const [price,setPrice]=useState('')
-   const [description,setDescription]=useState('')
-   const [categoria,setCategoria]=useState('')
-   const [image,setImage]=useState('')
-   const[stock,setStock]=useState('')
-   const [id,setId]=useState('')
 
-
-    const getProducts=async()=>{
+   const getProducts=async()=>{
    const res=await getAllProducts()
-        console.log(res)
         setProducts(res) 
     }
 
@@ -26,26 +17,30 @@ const ShowProducts=()=>{
         getProducts()
     },[])
 
-const deleteProd=async(id)=>{
-        deleteProduct(id)
-   } 
+   const getAllCarts = async (e,id_prod)=>{
+    const res= await getCarts()
 
-   const editProd =(title,price,description,categoria,image,stock,id)=>{
-   setTitle(title)
-   setPrice(price)
-   setDescription(description)
-   setCategoria(categoria)  
-   setImage(image)
-   setStock(stock)
-   setId(id) 
-   }
-
-   const edit=async (id)=>{
-     const res=await updateProduct(id,{title,price,description,categoria,image,stock,id})
-    console.log(res)
-   } 
-
-    return(
+    if(res.length===0){
+        const newCart=await addCart({
+            productos:[]
+        })
+        const res= await getCarts()
+        const id=res[0]._id
+        console.log(id)
+        localStorage.setItem('carritoId',id)
+        const id_producto=id_prod
+        const addProd=await addProductToCart(id,id_producto)
+        alert('Producto agregado') 
+            
+    }else {
+        const id=res[0]._id
+        localStorage.setItem('carritoId',id)
+        const id_producto=id_prod
+        const addProd=await addProductToCart(id,id_producto)
+        alert('Producto agregado') 
+    }
+ }
+      return(
         <>
              <div>
                 <h1>Productos</h1>
@@ -59,57 +54,14 @@ const deleteProd=async(id)=>{
                         {products.map((prod)=>(
                             <tr key={prod._id}>
                             <td>{prod.title}</td>
-                            <td>{prod.price}</td>
+                            <td>${prod.price}</td>
                             <td><img src={prod.image} width="15%"/></td>
-                            <td><button>Agregar al carrito</button></td>
+                            <td ><button onClick={(e)=>getAllCarts(e,prod._id)} id={prod._id}>Agregar al carrito</button></td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-             {/*  <form>
-              <label>Title</label>
-            <input
-            value={title}
-            onChange={(e)=>{setTitle(e.target.value)}}
-            type='text'
-            />
-            <label>Price</label>
-            <input
-            value={price}
-            onChange={(e)=>setPrice(e.target.value)}
-            type='number'
-            />
-            <label>Description</label>
-            <input
-            value={description}
-            onChange={(e)=>setDescription(e.target.value)}
-            type='text'
-            />
-            <label>Category</label>
-            <input
-            value={categoria}
-            onChange={(e)=>setCategoria(e.target.value)}
-            type='text'
-            />
-            <label>Image</label>
-            <input
-            value={image}
-            onChange={(e)=>setImage(e.target.value)}
-            type='text'
-            />
-            <label>Stock</label>
-            <input
-            value={stock}
-            onChange={(e)=>setStock(e.target.value)}
-            type='number'
-            />
-            
-            <button onClick={edit(id)}  >
-            Editar
-            </button>
-            </form>
-            <button>Ver carritos</button>
-            <ShowCarts products={products}/>*/}
+                <Link to='/carrito'><button>Ver carrito</button></Link>
              </div> 
         </>
     )
