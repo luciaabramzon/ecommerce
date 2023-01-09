@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { getCarts,getCartById,deleteCartProductById, comprar, deleteCartById} from "../../api/services"
-import { Header, Table, Rating, Button, Icon } from 'semantic-ui-react'
+import { getCartById,deleteCartProductById, comprar, deleteCartById} from "../../api/services"
+import { Header, Table, Button, Icon } from 'semantic-ui-react'
 
 const ShowCarts = ()=>{
     const [carts,setCarts]=useState('')
