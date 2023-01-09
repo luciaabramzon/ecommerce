@@ -1,9 +1,8 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { deleteProduct, getAllProducts, updateProduct,addProductToCart, getCarts,addCart, getCartById, getProductById } from '../../api/services'
-import ShowCarts from '../Cart/ShowCarts'
 
+import { useEffect, useState } from 'react'
+import { Link} from 'react-router-dom'
+import {  getAllProducts,addProductToCart, getCarts,addCart } from '../../api/services'
+import { Card,Image,Button, Header } from 'semantic-ui-react'
 
 const ShowProducts=()=>{
    const [products,setProducts]=useState([])
@@ -42,27 +41,45 @@ const ShowProducts=()=>{
  }
       return(
         <>
-             <div>
-                <h1>Productos</h1>
-                <table>
-                    <thead>
-                    <th>Titulo</th>
-                    <th>Precio</th>
-                    <th>Imagen</th>
-                    </thead>
-                    <tbody>
-                        {products.map((prod)=>(
-                            <tr key={prod._id}>
-                            <td>{prod.title}</td>
-                            <td>${prod.price}</td>
-                            <td><img src={prod.image} width="15%"/></td>
-                            <td ><button onClick={(e)=>getAllCarts(e,prod._id)} id={prod._id}>Agregar al carrito</button></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <Link to='/carrito'><button>Ver carrito</button></Link>
-             </div> 
+        <Header as='h1' color='teal'>Productos</Header>
+        <Card.Group itemsPerRow={3}>
+        {products.map((prod)=>(
+            <Card>
+                <Card.Content>
+                    
+                        <>
+                        <Image
+                        floated='right'
+                        src={prod.image}
+                        />
+                        <Card.Header>
+                        {prod.title}
+                        </Card.Header>
+                        <Card.Meta>
+                            {prod.price}
+                        </Card.Meta>
+                        <Card.Description>
+                            {prod.description}
+                        </Card.Description>
+                        <Button basic color='green' onClick={(e)=>getAllCarts(e,prod._id)} id={prod._id}>
+                            Agregar al carrito
+                        </Button>
+                        </>
+                        
+                  
+                </Card.Content>
+                
+            </Card>
+            
+            ))}
+        </Card.Group>
+        <br/>
+        <br/>
+        <div>
+        <Link to='/carrito'><Button positive>Ver Carrito</Button></Link>
+    </div>
+
+   
         </>
     )
 

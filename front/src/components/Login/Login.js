@@ -2,6 +2,8 @@ import React, {  useContext, useState } from "react"
 import { login } from "../../api/services"
 import { Link } from "react-router-dom"
 import { UserContext } from "../../api/context/UserContext"
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+
 
 
 const Login = () => {
@@ -31,33 +33,46 @@ const Login = () => {
 
   return (
     <>
-    <h1>Bienvenido</h1>
-    <h3>Ingrese su usuario y contraseña</h3>
-       <form onSubmit={formSubmitHandler} >
-        <label labelFor="username">
-          <input
-            id="username"
-            placeholder="Email"
-            type="user"
-            value={username}
-            onChange={e => setUsername(e.target.value)}
+    
+  <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Header as='h2' color='teal' textAlign='center'>
+        Log-in to your account
+      </Header>
+      <Form size='large' onSubmit={formSubmitHandler} >
+        <Segment stacked>
+          <Form.Input 
+          fluid 
+          icon='user' 
+          iconPosition='left' 
+          placeholder='E-mail address'
+          id="username"
+          type="user"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
           />
-        </label>
-        <label  labelFor="password">
-          <input
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='Password'
+            type='password'
             id="password"
-            placeholder="Password"
-            type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-        </label>
-        <button
-          type="submit"
-        >Login </button>
-      </form>
-      <h3>Si aun no esta registrado puede hacerlo en el siguiente enlace</h3>
-      <Link to='/register'>Registro</Link>
+
+          <Button color='teal' fluid size='large'>
+            Login
+          </Button>
+        </Segment>
+      </Form>
+      <Message>
+        New to us?<Link to='/register'><a>Registro</a></Link>
+      </Message>
+    </Grid.Column>
+  </Grid>
+      
     </>
   )
 }

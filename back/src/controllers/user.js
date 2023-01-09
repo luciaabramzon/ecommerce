@@ -16,7 +16,7 @@ let path=require('path')
 
    function signUp(req, res) {  
       req.session.user = req.user;
-      res.send('success')
+      res.json(req.user)
     };
   
     function login(req, res){  
