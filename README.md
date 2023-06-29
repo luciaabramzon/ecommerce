@@ -1,4 +1,7 @@
-Endpoints probados en front:
+Final Project for backend course.
+
+
+Endpoints tested at frontend:
 
 USER
 UserRouter.post('/signup',passport.authenticate("signup", {
@@ -26,6 +29,6 @@ CarritoRouter.delete('/:id',deleteCartById)
 CarritoRouter.delete('/:id/productos/:id_producto',deleteCartProductById)
 CarritoRouter.post('/:id/comprar/:username',comprar)
 
-Usuarios existentes:
+Users:
 username:clark@test.com 
 password:123456
